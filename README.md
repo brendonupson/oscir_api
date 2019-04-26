@@ -1,2 +1,9 @@
-# oscir_api
-Open Source Config Item Repository (CMDB) - Back end
+# OSCiR
+OSCiR is a CMDB, originally designed for tracking and managing IT assets and their relationships
+
+## oscir_api
+This is the back end code written in C# with json api interface (incl. swagger)
+
+
+## oscir_ui
+This is the front end written in Angular with Material, and interacts with oscir_api
