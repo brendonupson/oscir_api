@@ -1,0 +1,14 @@
+/Users/bupson/Projects/oscir_api/Domain/obj/Debug/netcoreapp2.2/Domain.csprojAssemblyReference.cache
+/Users/bupson/Projects/oscir_api/Domain/obj/Debug/netcoreapp2.2/Domain.csproj.CoreCompileInputs.cache
+/Users/bupson/Projects/oscir_api/Domain/obj/Debug/netcoreapp2.2/Domain.RazorAssemblyInfo.cache
+/Users/bupson/Projects/oscir_api/Domain/obj/Debug/netcoreapp2.2/Domain.RazorAssemblyInfo.cs
+/Users/bupson/Projects/oscir_api/Domain/obj/Debug/netcoreapp2.2/Domain.AssemblyInfoInputs.cache
+/Users/bupson/Projects/oscir_api/Domain/obj/Debug/netcoreapp2.2/Domain.AssemblyInfo.cs
+/Users/bupson/Projects/oscir_api/Domain/bin/Debug/netcoreapp2.2/Domain.deps.json
+/Users/bupson/Projects/oscir_api/Domain/bin/Debug/netcoreapp2.2/Domain.runtimeconfig.json
+/Users/bupson/Projects/oscir_api/Domain/bin/Debug/netcoreapp2.2/Domain.runtimeconfig.dev.json
+/Users/bupson/Projects/oscir_api/Domain/bin/Debug/netcoreapp2.2/Domain.dll
+/Users/bupson/Projects/oscir_api/Domain/bin/Debug/netcoreapp2.2/Domain.pdb
+/Users/bupson/Projects/oscir_api/Domain/obj/Debug/netcoreapp2.2/Domain.RazorTargetAssemblyInfo.cache
+/Users/bupson/Projects/oscir_api/Domain/obj/Debug/netcoreapp2.2/Domain.dll
+/Users/bupson/Projects/oscir_api/Domain/obj/Debug/netcoreapp2.2/Domain.pdb
