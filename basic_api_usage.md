@@ -39,7 +39,7 @@ Any errors will result in a payload similar to:
 }
 ```
 
-## Find Owner OwnerId
+## Find Owner Id
 Every owner should have a unique OwnerCode. It is best to look up owners by their OwnerCode. The following example uses "P":
 ```
 curl -X GET "https://localhost:5001/api/owner?ownerCodeEquals=P" -H "accept: application/json" -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiI......."
@@ -67,7 +67,7 @@ The response is an array of owners. When using OwnerCode you should expect 1 obj
 Store the id of the owner object for subsequent api calls
 
 
-## Find Class ClassId
+## Find Class Id
 The following example tries to find the "UCS Blade" Class
 ```
 curl -X GET "https://localhost:5001/api/class?classNameEquals=UCS%20Blade" -H "accept: application/json" -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiI......."
@@ -177,4 +177,71 @@ ConfigItem results returned in a paging object so that very large datasets can b
 }
 ```
 
-## Insert or Update ConfigItems
+## Insert ConfigItem
+```
+{
+  "name": "Your new CI name",
+  "comments": "",
+  "concreteReference": "YT66521-00987",
+  "properties": {
+    "custom1": "abc",
+    "custom2": 998,
+    "custom3": true
+  },
+  "classEntityId": "b1b3becd-e93e-4ec1-97ad-9615ce55f096",
+  "ownerId": "8addaaf5-f880-4164-9a4e-29d914b4439f",
+}
+```
+
+```
+curl -X POST "https://localhost:5001/api/configitem" -H "accept: application/json" -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiI......." -H "Content-Type: application/json-patch+json" -d "{ \"name\": \"Your new CI name\", \"comments\": \"\", \"concreteReference\": \"YT66521-00987\", \"properties\": { \"custom1\": \"abc\", \"custom2\": 998, \"custom3\": true }, \"classEntityId\": \"b1b3becd-e93e-4ec1-97ad-9615ce55f096\", \"ownerId\": \"8addaaf5-f880-4164-9a4e-29d914b4439f\",}"
+```
+
+Response (201):
+```
+{
+  "name": "Your new CI name",
+  "comments": "",
+  "concreteReference": "YT66521-00987",
+  "properties": {
+    "custom1": "abc",
+    "custom2": 998,
+    "custom3": true
+  },
+  "classEntityId": "b1b3becd-e93e-4ec1-97ad-9615ce55f096",
+  "ownerId": "8addaaf5-f880-4164-9a4e-29d914b4439f",
+  "sourceRelationships": null,
+  "targetRelationships": null,
+  "id": "3932ffbb-4fe5-438c-8a76-13d1f8de3332",
+  "modifiedOn": "2019-05-23T10:05:23.322008+04:00",
+  "modifiedBy": "admin",
+  "createdOn": "2019-05-23T10:05:23.322006+04:00",
+  "createdBy": "admin",
+  "deletedOn": null,
+  "deletedBy": null
+}
+```
+
+## Update ConfigItem
+There are two ways to update a ConfigItem
+1. Read the entire object from OSCiR, update the object properties, then PUT the entire object back
+2. Make a cutdown object with just the fields to update, the PATCH that back to OSCiR. This approach can be used on multiple ConfigItems in a single call, such as moving ConfigItems from one owner to another. This is the preferred update method, since the first option may inadvertently overwrite data from another user.
+
+
+### Patch
+```
+{
+  "configItemIds": [
+    "3932ffbb-4fe5-438c-8a76-13d1f8de3332"
+  ],
+  "patchConfigItem": 
+  {
+    "name": "Patched CI",
+    "ownerId": "8addaaf5-f880-4164-9a4e-29d914b4439f"
+  }
+}
+```
+```
+curl -X PATCH "https://localhost:5001/api/configitem" -H "accept: application/json" -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiI......." -H "Content-Type: application/json-patch+json" -d "{ \"configItemIds\": [ \"3932ffbb-4fe5-438c-8a76-13d1f8de3332\" ], \"patchConfigItem\": {\"name\": \"Patched CI\",\"ownerId\": \"8addaaf5-f880-4164-9a4e-29d914b4439f\"}}"
+```
+
