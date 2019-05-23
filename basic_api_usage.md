@@ -1,5 +1,6 @@
 # Basic Api Usage
 
+Swagger is available at https://localhost:5001/swagger/index.html
 This example assumes your code will interrogate a data source and upload the results as ConfigItems to OSCiR. The process is:
 
 1. Login, retrieve Jwt token for all subsequent requests
