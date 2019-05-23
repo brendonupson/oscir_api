@@ -44,7 +44,7 @@ Every owner should have a unique OwnerCode. It is best to look up owners by thei
 ```
 curl -X GET "https://localhost:5001/api/owner?ownerCodeEquals=P" -H "accept: application/json" -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiI......."
 ```
-The response is an array of owners. When using OwnerCode you shoudl expect 1 object returned
+The response is an array of owners. When using OwnerCode you should expect 1 object returned
 ```
 [
   {
@@ -67,9 +67,114 @@ The response is an array of owners. When using OwnerCode you shoudl expect 1 obj
 Store the id of the owner object for subsequent api calls
 
 
-
 ## Find Class ClassId
+The following example tries to find the "UCS Blade" Class
+```
+curl -X GET "https://localhost:5001/api/class?classNameEquals=UCS%20Blade" -H "accept: application/json" -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiI......."
+```
+which returns an array of Classes:
+```
+[
+  {
+    "className": "UCS Blade",
+    "comments": "",
+    "category": "",
+    "isInstantiable": true,
+    "isPromiscuous": false,
+    "allowAnyData": true,
+    "properties": null,
+    "extends": null,
+    "sourceRelationships": null,
+    "targetRelationships": null,
+    "id": "b1b3becd-e93e-4ec1-97ad-9615ce55f096",
+    "modifiedOn": "2019-05-12T10:20:49.878286",
+    "modifiedBy": "admin",
+    "createdOn": "2019-03-25T14:43:41.755392",
+    "createdBy": "admin",
+    "deletedOn": null,
+    "deletedBy": null
+  }
+]
+```
+Store the id of the class object for subsequent api calls
 
 ## Find an existing ConfigItem
+When syncing with an external system, each item being synced must have a globally unique reference. This is referred to as a "ConcreteReference". This ConcreteReference is defined externally, and can be a concatenation of multiple keys to make a globally unique reference. Any lookups should be against this ConcreteReference.
+
+```
+curl -X GET "https://localhost:5001/api/configitem?concreteReferenceEquals=ABCC1234&startRowIndex=0&resultPageSize=25" -H "accept: application/json" -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiI......."
+```
+ConfigItem results returned in a paging object so that very large datasets can be iterated through without impacting server performance. Results accessed from the "data" array.
+```
+{
+  "currentResultCount": 1,
+  "startRowIndex": 0,
+  "totalRecordCount": 1,
+  "data": [
+    {
+      "name": "sys/chassis-1/blade-1",
+      "comments": "",
+      "concreteReference": "ABCC1234",
+      "properties": {
+        "association": "associated",
+        "availability": "unavailable",
+        "dn": "sys/chassis-1/blade-1",
+        "mfgTime": "2015-05-09T00:00:00Z",
+        "availableMemory": 393216,
+        "totalMemory": 393216,
+        "chassisId": 1,
+        "memorySpeed": 1866,
+        "numOfCpus": 2,
+        "numOfCores": 20,
+        "numOfCoresEnabled": 20,
+        "numOfThreads": 40,
+        "numOfAdaptors": 1,
+        "numOfEthHostIfs": 6,
+        "numOfFcHostIfs": 2,
+        "usrLbl": "",
+        "slotId": 1,
+        "managingInst": "B",
+        "operPower": "on",
+        "uuid": "587c407a-a526-11e4-0000-000000000069",
+        "serial": "ABCC1234",
+        "vendor": "Cisco Systems Inc",
+        "model": "UCSB-B200-M4",
+        "cpuVendor": "Intel(R) Corporation",
+        "cpuModel": "Intel(R) Xeon(R) CPU E5-2660 v3 @ 2.60GHz",
+        "cpuSpeed": 2.6,
+        "cpuStepping": 2,
+        "fwBIOS": "B200M4.3.1.1a.0.121720151230",
+        "fwBoot": "3.1(1e).36",
+        "fwRunning": "3.1(1e)",
+        "fwBMC": "10.0"
+      },
+      "classEntityId": "b1b3becd-e93e-4ec1-97ad-9615ce55f096",
+      "ownerId": "8addaaf5-f880-4164-9a4e-29d914b4439f",
+      "sourceRelationships": [
+        {
+          "sourceConfigItemEntityId": "1561dec1-3f63-45a5-a001-e2c921e15fdc",
+          "relationshipDescription": "Is Installed in",
+          "targetConfigItemEntityId": "2f780010-443b-4acd-91e8-10e6c270647d",
+          "id": "870b500c-7447-4ff7-853d-e13895792cc1",
+          "modifiedOn": "2019-05-16T18:49:37.48513",
+          "modifiedBy": "admin",
+          "createdOn": "2019-05-16T18:49:37.485129",
+          "createdBy": "admin",
+          "deletedOn": null,
+          "deletedBy": null
+        }
+      ],
+      "targetRelationships": [],
+      "id": "1561dec1-3f63-45a5-a001-e2c921e15fdc",
+      "modifiedOn": "2019-05-17T13:18:37.369493",
+      "modifiedBy": "admin",
+      "createdOn": "2019-05-02T18:01:56.574971",
+      "createdBy": "admin",
+      "deletedOn": null,
+      "deletedBy": null
+    }
+  ]
+}
+```
 
 ## Insert or Update ConfigItems
