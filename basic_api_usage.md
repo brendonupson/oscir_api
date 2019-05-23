@@ -12,7 +12,7 @@ This example assumes your code will interrogate a data source and upload the res
 ## Login
 Send the username and password to the server
 ```
-curl -X POST "https://localhost:5001/Auth/Login" -H "accept: application/json" -H "Content-Type: application/json-patch+json" -d "{ \"username\": \"your_username\", \"your_password\": \"string\"}"
+curl -X POST "https://localhost:5001/Auth/Login" -H "accept: application/json" -H "Content-Type: application/json-patch+json" -d "{ \"username\": \"your_username\", \"password\": \"your_password\"}"
 ```
 which returns a bearer token (Jwt)
 ```
