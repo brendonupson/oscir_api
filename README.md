@@ -3,7 +3,7 @@ OSCiR is a CMDB, originally designed for tracking and managing IT assets and the
 
 ## oscir_api
 This is the back end code written in C# with json api interface (incl. swagger)
-[Basic Api Usage](/basic_api-usage.md)
+[Basic Api Usage](/basic_api_usage.md)
 
 
 
