@@ -238,7 +238,11 @@ There are two ways to update a ConfigItem
   "patchConfigItem": 
   {
     "name": "Patched CI",
-    "ownerId": "8addaaf5-f880-4164-9a4e-29d914b4439f"
+    "properties": {
+      "age": 37,
+      "canDelete": true,
+      "profileName": "ABC 123"
+    }
   }
 }
 ```
