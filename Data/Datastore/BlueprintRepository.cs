@@ -47,14 +47,23 @@ namespace OSCiR.Datastore
 
         }
 
-        public bool DeleteClass(Guid id)
+        public bool DeleteClass(Guid classEntityId, string userName)
         {
             try
             {
-                ClassEntity classToBeDeleted = new ClassEntity { Id = id };
+                var cList = ReadClasses(new Guid[] { classEntityId });
+                if (cList.Count() == 1)
+                {
+                    var c = cList.First();
+                    c.DeletedOn = DateTime.Now;
+                    c.DeletedBy = userName;
+                    UpdateClass(c);
+                    return true;
+                }
+                /*ClassEntity classToBeDeleted = new ClassEntity { Id = id };
                 _dbContext.Entry(classToBeDeleted).State = EntityState.Deleted;
-                _dbContext.SaveChanges();
-                return true;
+                _dbContext.SaveChanges();*/
+                return false;
             }
             catch (Exception e)
             {
@@ -62,44 +71,17 @@ namespace OSCiR.Datastore
             }
         }
 
-        public IEnumerable<ClassEntity> ReadClasses(string classNameContains, string classCategoryEquals)
+        public IEnumerable<ClassEntity> ReadClasses(string classNameContains, string classNameEquals, string classCategoryEquals)
         {
 
             try
             {
-                //this seems a bit rubbish. Need to see if Linq can do dynamic queries based on input parameters
-                if (classNameContains != null && classNameContains.Length > 0 &&
-                classCategoryEquals != null && classCategoryEquals.Length > 0)
-                {
-                    var ownerResults = _classSet.Where(a => (a.ClassName.ToLower().Contains(classNameContains.ToLower()) &&
-                            a.Category.ToLower().Equals(classNameContains.ToLower())))
+                var classResults = _classSet.Where(a => ((String.IsNullOrEmpty(classNameContains) || a.ClassName.ToLower().Contains(classNameContains.ToLower())) &&
+                                                            (String.IsNullOrEmpty(classNameEquals) || a.ClassName.ToLower().Equals(classNameEquals.ToLower())) &&
+                                                            (String.IsNullOrEmpty(classCategoryEquals) || a.Category.ToLower().Equals(classCategoryEquals.ToLower()))))
                             .OrderBy(o => o.ClassName)
                             .AsNoTracking().ToList<ClassEntity>();
-                    return ownerResults;
-                }
-
-
-                if (classCategoryEquals != null && classCategoryEquals.Length > 0)
-                {
-                    var ownerResults = _classSet.Where(a => a.Category.ToLower().Equals(classCategoryEquals.ToLower()))
-                            .OrderBy(o => o.ClassName)
-                            .AsNoTracking().ToList<ClassEntity>();
-                    return ownerResults;
-                }
-
-                if (classNameContains != null && classNameContains.Length > 0)
-                {
-                    var ownerResults = _classSet.Where(a => a.ClassName.ToLower().Contains(classNameContains.ToLower()))
-                            .OrderBy(o => o.ClassName)
-                            .AsNoTracking().ToList<ClassEntity>();
-                    return ownerResults;
-                }
-
-
-                var result = _classSet
-                            .OrderBy(o => o.ClassName)
-                            .AsNoTracking().ToList<ClassEntity>();
-                return result;
+                return classResults;
             }
             catch (Exception e)
             {
@@ -249,7 +231,7 @@ namespace OSCiR.Datastore
 
         public ClassRelationshipEntity ReadClassRelationship(Guid classRelationshipId)
         {
-            if (classRelationshipId==null || classRelationshipId == Guid.Empty) throw new DataReadException("Invalid classRelationshipId passed");
+            if (classRelationshipId == null || classRelationshipId == Guid.Empty) throw new DataReadException("Invalid classRelationshipId passed");
 
             try
             {
@@ -300,7 +282,6 @@ namespace OSCiR.Datastore
                 foreach (var rel in relationships)
                 {
                     if (rel.RelationshipDescription.ToLower().Equals(relationshipHint.ToLower())) return rel;
-                    //if (rel.InverseRelationshipDescription.ToLower().Equals(relationshipHint.ToLower())) return rel;
                 }
             }
 
@@ -366,13 +347,18 @@ namespace OSCiR.Datastore
 
         }
 
-        public bool DeleteClassRelationship(Guid classRelationshipGuid)
+        public bool DeleteClassRelationship(Guid classRelationshipGuid, string userName)
         {
 
             try
             {
-                ClassRelationshipEntity classToBeDeleted = new ClassRelationshipEntity { Id = classRelationshipGuid };
-                _dbContext.Entry(classToBeDeleted).State = EntityState.Deleted;
+                //ClassRelationshipEntity classToBeDeleted = new ClassRelationshipEntity { Id = classRelationshipGuid };
+                //_dbContext.Entry(classToBeDeleted).State = EntityState.Deleted;
+                //_dbContext.SaveChanges();
+                ClassRelationshipEntity cir = _classRelationshipSet.Where(p => p.Id == classRelationshipGuid).FirstOrDefault();
+                _dbContext.Entry(cir).State = EntityState.Modified;
+                cir.DeletedOn = DateTime.Now;
+                cir.DeletedBy = userName;
                 _dbContext.SaveChanges();
                 return true;
             }

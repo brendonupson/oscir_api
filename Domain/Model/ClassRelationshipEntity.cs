@@ -19,6 +19,7 @@ namespace OSCiR.Model
 
         public string RelationshipDescription { get; set; }
         //public string InverseRelationshipDescription { get; set; }
+        public bool IsUnique { get; set; } //only allow one relationship from source to target, ie a network switch can reside in only one rack
 
 
         public ClassRelationshipEntity()

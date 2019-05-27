@@ -6,6 +6,7 @@ namespace OSCiR.Areas.Shared
 {
     /*
      * dotnet ef migrations add InitialCreate   
+     * Project started 12 January 2019    
      */
     public class CMDbContext : DbContext
     {
@@ -73,24 +74,24 @@ namespace OSCiR.Areas.Shared
 
 
             modelBuilder.Entity<ClassRelationshipEntity>()
-                .HasIndex(p => new { p.SourceClassEntityId, p.TargetClassEntityId, p.RelationshipDescription }).IsUnique();
+                .HasIndex(p => new { p.DeletedOn, p.SourceClassEntityId, p.TargetClassEntityId, p.RelationshipDescription }).IsUnique();
             modelBuilder.Entity<ClassRelationshipEntity>()
-                .HasIndex(p => new { p.TargetClassEntityId }); //for lookup speed
+                .HasIndex(p => new { p.DeletedOn, p.TargetClassEntityId }); //for lookup speed
 
 
             modelBuilder.Entity<ConfigItemRelationshipEntity>()
-                .HasIndex(p => new { p.SourceConfigItemEntityId, p.TargetConfigItemEntityId, p.RelationshipDescription }).IsUnique();
+                .HasIndex(p => new { p.DeletedOn, p.SourceConfigItemEntityId, p.TargetConfigItemEntityId, p.RelationshipDescription }).IsUnique();
             modelBuilder.Entity<ConfigItemRelationshipEntity>()
-                .HasIndex(p => new { p.TargetConfigItemEntityId }); //for lookup speed
+                .HasIndex(p => new { p.DeletedOn, p.TargetConfigItemEntityId }); //for lookup speed
 
             modelBuilder.Entity<ConfigItemEntity>()
-                .HasIndex(p => new { p.ClassEntityId, p.OwnerId, p.Name }).IsUnique();
+                .HasIndex(p => new { p.DeletedOn, p.ClassEntityId, p.OwnerId, p.Name }).IsUnique();
 
             modelBuilder.Entity<ClassExtendEntity>()
-               .HasIndex(p => new { p.ClassEntityId, p.ExtendsClassEntityId }).IsUnique();
+               .HasIndex(p => new { p.DeletedOn, p.ClassEntityId, p.ExtendsClassEntityId }).IsUnique();
 
             modelBuilder.Entity<ClassPropertyEntity>()
-                .HasIndex(p => new { p.ClassEntityId, p.InternalName }).IsUnique();
+                .HasIndex(p => new { p.DeletedOn, p.ClassEntityId, p.InternalName }).IsUnique();
 
 
 
@@ -102,7 +103,20 @@ namespace OSCiR.Areas.Shared
             modelBuilder.Entity<ClassRelationshipEntity>().HasIndex(e => e.TargetClassEntityId); //fast lookups by target
 
 
-            //FIXME add defaults to all tables
+            //enable default queries for soft deletes
+            modelBuilder.Entity<ClassEntity>()
+            .HasQueryFilter(rel => EF.Property<DateTime?>(rel, "DeletedOn") == null);
+
+            modelBuilder.Entity<ClassRelationshipEntity>()
+            .HasQueryFilter(rel => EF.Property<DateTime?>(rel, "DeletedOn") == null);
+
+            modelBuilder.Entity<ConfigItemEntity>()
+            .HasQueryFilter(rel => EF.Property<DateTime?>(rel, "DeletedOn") == null);
+
+            modelBuilder.Entity<ConfigItemRelationshipEntity>()
+            .HasQueryFilter(rel => EF.Property<DateTime?>(rel, "DeletedOn") == null);
+
+
         }
     }
 }

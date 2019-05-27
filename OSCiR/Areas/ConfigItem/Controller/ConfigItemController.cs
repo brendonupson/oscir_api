@@ -11,6 +11,8 @@ using Microsoft.Extensions.Configuration;
 using OSCiR.Shared;
 using App;
 using OSCiR.Datastore;
+using OSCiR.Areas.ConfigItem.Model;
+using Newtonsoft.Json.Linq;
 
 namespace OSCiR.Controllers
 {
@@ -32,7 +34,7 @@ namespace OSCiR.Controllers
 
 
         [HttpGet]
-        public async Task<ActionResult<ConfigItemEntity[]>> GetCIsForClassOrOwner(Guid? classEntityId, Guid? ownerId)
+        public async Task<ActionResult<ConfigItemEntity[]>> GetCIsForClassOrOwner(Guid? classEntityId, Guid? ownerId, string nameLike, string nameEquals, string concreteReferenceEquals, int startRowIndex, int resultPageSize)
         {
             var authorizationResult = await _authorizationService.AuthorizeAsync(User, new ConfigItemEntity(), Operations.Read);
             if (!authorizationResult.Succeeded)
@@ -42,8 +44,19 @@ namespace OSCiR.Controllers
 
             try
             {
-                var ciReply = _configItemManager.GetConfigItemsForClassOrOwner(classEntityId, ownerId);
-                return Ok(ciReply);
+                DataSetPager pager = new DataSetPager();
+                pager.StartRowIndex = startRowIndex;
+                pager.MaxPageSize = resultPageSize;
+                var ciReply = _configItemManager.GetConfigItemsForClassOrOwner(pager, classEntityId, ownerId, nameLike, nameEquals, concreteReferenceEquals);
+                var reply = new
+                {
+                    currentResultCount = pager.CurrentResultCount,
+                    startRowIndex = pager.StartRowIndex,
+                    totalRecordCount = pager.TotalRecordCount,
+                    data = ciReply
+                };
+
+                return Ok(reply);
             }
             catch (Exception e)
             {
@@ -146,6 +159,39 @@ namespace OSCiR.Controllers
             }
         }
 
+        [HttpPatch()]
+        public async Task<ActionResult<ConfigItemEntity>> Patch([FromBody] PatchConfigItemModel patch)
+        {
+            //check we have access to all first
+            foreach (var configItemId in patch.ConfigItemIds)
+            {
+                ConfigItemEntity configItem = new ConfigItemEntity() { Id = configItemId };
+                var authorizationResult = await _authorizationService.AuthorizeAsync(User, configItem, Operations.Update);
+                if (!authorizationResult.Succeeded)
+                {
+                    return Unauthorized();
+                }
+            }//foreach
+
+
+            try
+            {
+                var userName = Utils.getCurrentUserName(User);
+                patch.patchConfigItem["modifiedBy"] = userName;
+
+                foreach (var configItemId in patch.ConfigItemIds)
+                {
+                    _configItemManager.PatchConfigItem(configItemId, patch.patchConfigItem);
+                }
+
+                return Ok();
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.ToString());
+            }
+        }
+
 
         [HttpDelete("{configItemId}")]
         public async Task<object> Delete(Guid configItemId)
@@ -158,7 +204,8 @@ namespace OSCiR.Controllers
 
             try
             {
-                if (!_configItemManager.DeleteConfigItem(configItemId))
+                var userName = Utils.getCurrentUserName(User);
+                if (!_configItemManager.DeleteConfigItem(configItemId, userName))
                 {
                     return BadRequest("Delete failed");
                 }

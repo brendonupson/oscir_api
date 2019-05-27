@@ -8,6 +8,7 @@ using Microsoft.Extensions.Configuration;
 using OSCiR.Shared;
 using OSCiR.Datastore;
 using App;
+using OSCiR.Areas.Admin.Class.Model;
 
 namespace OSCiR.Controllers
 {
@@ -23,7 +24,7 @@ namespace OSCiR.Controllers
 
         public ClassRelationshipController(CMDbContext dbContext, IConfiguration configuration, IAuthorizationService authorizationService)
         {
-            _blueprintManager = new BlueprintManager(new BlueprintRepository(dbContext));
+            _blueprintManager = new BlueprintManager(new BlueprintRepository(dbContext), new ConfigItemRepository(dbContext));
             _authorizationService = authorizationService;
         }
 
@@ -88,7 +89,8 @@ namespace OSCiR.Controllers
 
             try
             {
-                if (!_blueprintManager.DeleteClassRelationship(classRelationshipGuid))
+                var userName = Utils.getCurrentUserName(User);
+                if (!_blueprintManager.DeleteClassRelationship(classRelationshipGuid, userName))
                 {
                     return BadRequest("Delete failed");
                 }

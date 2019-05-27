@@ -7,8 +7,11 @@ using Microsoft.EntityFrameworkCore;
 using DomainLayer.Exceptions;
 using Application.Interfaces;
 
+
 namespace OSCiR.Areas.Admin.Class.Model
 {
+// https://docs.microsoft.com/en-us/dotnet/api/system.threading.readerwriterlockslim?redirectedfrom=MSDN&view=netframework-4.8
+//TODO ??
     public class ConfigItemRepository : IConfigItemData
     {
         private DbContext _dbContext;
@@ -31,8 +34,9 @@ namespace OSCiR.Areas.Admin.Class.Model
             try
             {
                 IEnumerable <ConfigItemEntity> cis = _ciSet.AsNoTracking().Where(p => configItemGuids.Contains(p.Id))
-                    .Include(i => i.SourceRelationships)
-                    .Include(i => i.TargetRelationships)
+                   // && p.DeletedOn == null)
+                    .Include(i => i.SourceRelationships) 
+                    .Include(i => i.TargetRelationships) 
                     .AsEnumerable<ConfigItemEntity>();
 
                 return cis;
@@ -45,15 +49,24 @@ namespace OSCiR.Areas.Admin.Class.Model
 
 
 
-        public bool DeleteConfigItem(Guid configItemId)
+        public bool DeleteConfigItem(Guid configItemId, string userName)
         {
 
             try
             {
-                ConfigItemEntity ciToBeDeleted = new ConfigItemEntity { Id = configItemId };
-                _dbContext.Entry(ciToBeDeleted).State = EntityState.Deleted;
-                _dbContext.SaveChanges();
-                return true;
+                //ConfigItemEntity ciToBeDeleted = new ConfigItemEntity { Id = configItemId };
+                var ciList = ReadConfigItems(new Guid[] { configItemId });
+                if(ciList.Count()==1)
+                {
+                    var ci = ciList.First();
+                    ci.DeletedOn = DateTime.Now;
+                    ci.DeletedBy = userName;
+                    UpdateConfigItem(ci);
+                    return true;
+                }
+                //_dbContext.Entry(ciToBeDeleted).State = EntityState.Deleted;
+                //_dbContext.SaveChanges();
+                return false;
             }
             catch (Exception e)
             {
@@ -63,26 +76,41 @@ namespace OSCiR.Areas.Admin.Class.Model
 
         }
 
-
-        public IEnumerable<ConfigItemEntity> GetConfigItemsForClassOrOwner(Guid? classEntityId, Guid? ownerId)
+        public IEnumerable<ConfigItemEntity> GetConfigItemsForClassOrOwner(DataSetPager pager, Guid? classEntityId, Guid? ownerId, string nameLike, string nameEquals, string concreteRefEquals)
         {
-            if (classEntityId == null && ownerId == null) throw new DataReadException("classEntityId or ownerId must be specified");
 
+            if (classEntityId == null && ownerId == null && string.IsNullOrEmpty(nameLike) && string.IsNullOrEmpty(nameEquals) && string.IsNullOrEmpty(concreteRefEquals) ) throw new DataReadException("At least one paramete must be specified");
+            if (pager == null) pager = new DataSetPager();
+
+            bool skipNameLike = String.IsNullOrEmpty(nameLike);
+            bool skipNameEquals = String.IsNullOrEmpty(nameEquals);
+            bool skipConcreteRef = String.IsNullOrEmpty(concreteRefEquals);
             try
             {
-                var result = _ciSet.Where(a => (classEntityId==null?true:a.ClassEntityId == classEntityId) &&
-                            (ownerId==null?true:a.OwnerId == ownerId) )
+                // https://stackoverflow.com/questions/5449863/how-to-get-the-count-from-iqueryable
+                var query = _ciSet.AsNoTracking().Where(a => ((classEntityId == null ? true : a.ClassEntityId == classEntityId)
+                                                              && (ownerId == null ? true : a.OwnerId == ownerId)
+                                                              && (skipNameLike || a.Name.ToLower().Contains(nameLike.ToLower()))
+                                                              && (skipNameEquals || a.Name.ToLower().Equals(nameEquals.ToLower()))
+                                                              && (skipConcreteRef || a.ConcreteReference.Equals(concreteRefEquals))
+                                                ))
                             .Include(i => i.SourceRelationships)
                             .Include(i => i.TargetRelationships)
                             .OrderBy(o => o.Name)
-                            .AsNoTracking().ToList<ConfigItemEntity>();
-                return result;
+                            .AsQueryable();
+
+                pager.TotalRecordCount = query.Count();
+                //return query.Skip(startRowIndex).Take(maximumRows);
+                var reply = query.Skip(pager.StartRowIndex).Take(pager.MaxPageSize).ToList<ConfigItemEntity>();
+                pager.CurrentResultCount = reply.Count();
+                return reply;
             }
             catch (Exception e)
             {
                 throw new DataReadException(e.Message, e);
             }
         }
+
 
 
         public ConfigItemEntity CreateConfigItem(ConfigItemEntity configItemEntity)
@@ -160,7 +188,8 @@ namespace OSCiR.Areas.Admin.Class.Model
                     return ciRelations;
                 }
 
-                var cir = _cirSet.AsNoTracking().Where(p => p.SourceConfigItemEntityId == sourceConfigItemId).ToList();
+                var cir = _cirSet.AsNoTracking().Where(p => p.SourceConfigItemEntityId == sourceConfigItemId)
+                            .ToList();
                 return cir;
             }
             catch (Exception e)
@@ -188,13 +217,17 @@ namespace OSCiR.Areas.Admin.Class.Model
         }
 
 
-        public bool DeleteConfigItemRelationship(Guid configItemRelationshipId)
+        public bool DeleteConfigItemRelationship(Guid configItemRelationshipId, string userName)
         {
             try
             {
-                ConfigItemRelationshipEntity ciToBeDeleted = new ConfigItemRelationshipEntity { Id = configItemRelationshipId };
-                //_dbContext.Entry(ciToBeDeleted).State = EntityState.Deleted;
-                _dbContext.Remove(ciToBeDeleted);
+                //ConfigItemRelationshipEntity ciToBeDeleted = new ConfigItemRelationshipEntity { Id = configItemRelationshipId };
+                //_dbContext.Remove(ciToBeDeleted);
+                //var cir = ReadConfigItemRelationship(configItemRelationshipId);
+                ConfigItemRelationshipEntity cir = _cirSet.Where(p => p.Id == configItemRelationshipId).FirstOrDefault();
+                _dbContext.Entry(cir).State = EntityState.Modified;
+                cir.DeletedOn = DateTime.Now;
+                cir.DeletedBy = userName;
                 _dbContext.SaveChanges();
                 return true;
             }
@@ -202,8 +235,26 @@ namespace OSCiR.Areas.Admin.Class.Model
             {
                 throw new DataWriteException(e.Message, e);
             }
+        }
 
+        public void DeleteConfigItemRelationshipsToClass(Guid sourceConfigItemEntityId, Guid targetClassEntityId, string userName)
+        {
 
+            try
+            {
+                List <ConfigItemRelationshipEntity> relList = _cirSet.AsNoTracking().Where(p => p.SourceConfigItemEntityId == sourceConfigItemEntityId
+                && p.TargetConfigItem.ClassEntityId==targetClassEntityId).ToList();
+
+                foreach(var rel in relList)
+                {
+                    this.DeleteConfigItemRelationship(rel.Id, userName);
+                }
+
+            }
+            catch (Exception e)
+            {
+                throw new DataReadException(e.Message, e);
+            }
         }
 
 

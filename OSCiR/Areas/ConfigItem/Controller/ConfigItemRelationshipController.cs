@@ -81,7 +81,7 @@ namespace OSCiR.Controllers
 
 
         [HttpPost()]
-        public async Task<ActionResult<ConfigItemRelationshipEntity>> Post([FromBody] ConfigItemRelationshipEntity configItemRelationship)
+        public async Task<ActionResult<ConfigItemRelationshipEntity>> Post([FromBody] ConfigItemRelationshipEntity configItemRelationship, bool ensureUniqueBetweenClasses)
         {
             var authorizationResult = await _authorizationService.AuthorizeAsync(User, configItemRelationship, Operations.Update);
             if (!authorizationResult.Succeeded)
@@ -103,7 +103,7 @@ namespace OSCiR.Controllers
                 }
 
                 var userName = Utils.getCurrentUserName(User);
-                var relationshipReply = _configItemManager.CreateConfigItemRelationship(configItemRelationship.SourceConfigItemEntityId, configItemRelationship.TargetConfigItemEntityId, configItemRelationship.RelationshipDescription, userName);
+                var relationshipReply = _configItemManager.CreateConfigItemRelationship(configItemRelationship.SourceConfigItemEntityId, configItemRelationship.TargetConfigItemEntityId, configItemRelationship.RelationshipDescription, ensureUniqueBetweenClasses, userName);
 
                 return Ok(relationshipReply);
             }
@@ -124,7 +124,8 @@ namespace OSCiR.Controllers
 
             try
             {
-                if (!_configItemManager.DeleteConfigItemRelationship(configItemRelationshipId))
+                var userName = Utils.getCurrentUserName(User);
+                if (!_configItemManager.DeleteConfigItemRelationship(configItemRelationshipId, userName))
                 {
                     return BadRequest("Delete failed");
                 }

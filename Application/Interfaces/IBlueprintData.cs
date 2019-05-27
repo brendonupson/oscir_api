@@ -10,32 +10,26 @@ namespace Application.Interfaces
         ClassEntity CreateClass(ClassEntity classEntity);
         //ClassEntity ReadClass(Guid classGuid);
         ClassEntity UpdateClass(ClassEntity classEntity);
-        bool DeleteClass(Guid classGuid);
+        bool DeleteClass(Guid classGuid, string userName);
 
         IEnumerable<ClassEntity> ReadClasses(Guid[] classGuids);
-        IEnumerable<ClassEntity> ReadClasses(string classNameContains, string classCategoryEquals);
+        IEnumerable<ClassEntity> ReadClasses(string classNameContains, string classNameEquals, string classCategoryEquals);
         ClassEntity GetClassFullPropertyDefinition(Guid classGuid);
 
 
         ClassExtendEntity CreateClassExtend(ClassExtendEntity classExtendEntity);
-        //ClassExtendEntity ReadClassExtend(Guid classExtendGuid);
-        //ClassExtendEntity UpdateClassExtend(ClassExtendEntity classExtendEntity);
         bool DeleteClassExtend(Guid classExtendGuid);
 
         ClassRelationshipEntity CreateClassRelationship(ClassRelationshipEntity classRelationshipEntity);
         ClassRelationshipEntity ReadClassRelationship(Guid classRelationshipGuid);
-        //ClassRelationshipEntity UpdateClassRelationship(ClassRelationshipEntity classRelationshipEntity);
-        bool DeleteClassRelationship(Guid classRelationshipGuid);
+         bool DeleteClassRelationship(Guid classRelationshipGuid, string userName);
 
         ClassRelationshipEntity GetClassRelationship(Guid sourceClassEntityId, Guid targetClassEntityId, string relationshipHint);
 
 
         ClassPropertyEntity CreateClassProperty(ClassPropertyEntity classPropertyEntity);
-        //ClassPropertyEntity ReadClassProperty(Guid classPropertyGuid);
-        ClassPropertyEntity UpdateClassProperty(ClassPropertyEntity classPropertyEntity);
+         ClassPropertyEntity UpdateClassProperty(ClassPropertyEntity classPropertyEntity);
         bool DeleteClassProperty(Guid classPropertyGuid);
-
-        //IEnumerable<OwnerEntity> GetOwners(string ownerCodeContains, string ownerNameContains);
 
     }
 }

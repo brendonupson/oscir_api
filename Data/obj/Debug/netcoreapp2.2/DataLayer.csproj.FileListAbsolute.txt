@@ -1,9 +1,3 @@
-/Users/bupson/Projects/oscir_api/Data/obj/Debug/netcoreapp2.2/DataLayer.csprojAssemblyReference.cache
-/Users/bupson/Projects/oscir_api/Data/obj/Debug/netcoreapp2.2/DataLayer.csproj.CoreCompileInputs.cache
-/Users/bupson/Projects/oscir_api/Data/obj/Debug/netcoreapp2.2/DataLayer.RazorAssemblyInfo.cache
-/Users/bupson/Projects/oscir_api/Data/obj/Debug/netcoreapp2.2/DataLayer.RazorAssemblyInfo.cs
-/Users/bupson/Projects/oscir_api/Data/obj/Debug/netcoreapp2.2/DataLayer.AssemblyInfoInputs.cache
-/Users/bupson/Projects/oscir_api/Data/obj/Debug/netcoreapp2.2/DataLayer.AssemblyInfo.cs
 /Users/bupson/Projects/oscir_api/Data/bin/Debug/netcoreapp2.2/DataLayer.deps.json
 /Users/bupson/Projects/oscir_api/Data/bin/Debug/netcoreapp2.2/DataLayer.runtimeconfig.json
 /Users/bupson/Projects/oscir_api/Data/bin/Debug/netcoreapp2.2/DataLayer.runtimeconfig.dev.json
@@ -13,6 +7,12 @@
 /Users/bupson/Projects/oscir_api/Data/bin/Debug/netcoreapp2.2/DomainLayer.dll
 /Users/bupson/Projects/oscir_api/Data/bin/Debug/netcoreapp2.2/ApplicationLayer.pdb
 /Users/bupson/Projects/oscir_api/Data/bin/Debug/netcoreapp2.2/DomainLayer.pdb
+/Users/bupson/Projects/oscir_api/Data/obj/Debug/netcoreapp2.2/DataLayer.csprojAssemblyReference.cache
+/Users/bupson/Projects/oscir_api/Data/obj/Debug/netcoreapp2.2/DataLayer.csproj.CoreCompileInputs.cache
+/Users/bupson/Projects/oscir_api/Data/obj/Debug/netcoreapp2.2/DataLayer.RazorAssemblyInfo.cache
+/Users/bupson/Projects/oscir_api/Data/obj/Debug/netcoreapp2.2/DataLayer.RazorAssemblyInfo.cs
+/Users/bupson/Projects/oscir_api/Data/obj/Debug/netcoreapp2.2/DataLayer.AssemblyInfoInputs.cache
+/Users/bupson/Projects/oscir_api/Data/obj/Debug/netcoreapp2.2/DataLayer.AssemblyInfo.cs
 /Users/bupson/Projects/oscir_api/Data/obj/Debug/netcoreapp2.2/DataLayer.RazorTargetAssemblyInfo.cache
 /Users/bupson/Projects/oscir_api/Data/obj/Debug/netcoreapp2.2/DataLayer.csproj.CopyComplete
 /Users/bupson/Projects/oscir_api/Data/obj/Debug/netcoreapp2.2/DataLayer.dll

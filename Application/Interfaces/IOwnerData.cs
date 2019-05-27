@@ -12,7 +12,7 @@ namespace Application.Interfaces
         OwnerEntity Update(OwnerEntity ownerEntity);
         bool Delete(Guid ownerGuid);
 
-        IEnumerable<OwnerEntity> GetOwners(string ownerCodeContains, string ownerNameContains);
+        IEnumerable<OwnerEntity> GetOwners(string ownerCodeEquals, string ownerNameContains);
 
     }
 }

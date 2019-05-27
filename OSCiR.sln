@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OSCiR", "OSCiR\OSCiR.csproj", "{D6B22F96-1DE5-40AA-AFDD-4DFE4E69945A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web.Api.IntegrationTests", "tests\Web.Api.IntegrationTests\Web.Api.IntegrationTests.csproj", "{546F46A4-2A6D-47A8-913D-645706D5554B}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DomainLayer", "Domain\DomainLayer.csproj", "{414455B9-DECD-4753-9077-8B945E0F24BF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApplicationLayer", "Application\ApplicationLayer.csproj", "{E57EC988-4E9C-4C4B-9233-8C1E7C3E1365}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataLayer", "Data\DataLayer.csproj", "{36DEC203-E2BB-4EA4-B91F-FBB775621952}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OSCiR_xUnit", "OSCiR_xUnit\OSCiR_xUnit.csproj", "{B5BF276E-223D-4139-BED7-DE63EC6C223C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,10 +21,6 @@ Global
 		{D6B22F96-1DE5-40AA-AFDD-4DFE4E69945A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D6B22F96-1DE5-40AA-AFDD-4DFE4E69945A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D6B22F96-1DE5-40AA-AFDD-4DFE4E69945A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{546F46A4-2A6D-47A8-913D-645706D5554B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{546F46A4-2A6D-47A8-913D-645706D5554B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{546F46A4-2A6D-47A8-913D-645706D5554B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{546F46A4-2A6D-47A8-913D-645706D5554B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{414455B9-DECD-4753-9077-8B945E0F24BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{414455B9-DECD-4753-9077-8B945E0F24BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{414455B9-DECD-4753-9077-8B945E0F24BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -37,6 +33,10 @@ Global
 		{36DEC203-E2BB-4EA4-B91F-FBB775621952}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{36DEC203-E2BB-4EA4-B91F-FBB775621952}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{36DEC203-E2BB-4EA4-B91F-FBB775621952}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B5BF276E-223D-4139-BED7-DE63EC6C223C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5BF276E-223D-4139-BED7-DE63EC6C223C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B5BF276E-223D-4139-BED7-DE63EC6C223C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B5BF276E-223D-4139-BED7-DE63EC6C223C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
 		Policies = $0

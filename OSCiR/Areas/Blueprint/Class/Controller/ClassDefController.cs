@@ -8,6 +8,7 @@ using Microsoft.Extensions.Configuration;
 using OSCiR.Shared;
 using OSCiR.Datastore;
 using App;
+using OSCiR.Areas.Admin.Class.Model;
 
 namespace OSCiR.Areas.Admin.Class.Controller
 {
@@ -22,7 +23,7 @@ namespace OSCiR.Areas.Admin.Class.Controller
 
         public ClassDefController(CMDbContext dbContext, IConfiguration configuration, IAuthorizationService authorizationService)
         {
-            _blueprintManager = new BlueprintManager(new BlueprintRepository(dbContext));
+            _blueprintManager = new BlueprintManager(new BlueprintRepository(dbContext), new ConfigItemRepository(dbContext));
             _authorizationService = authorizationService;
         }
 

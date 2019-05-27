@@ -30,7 +30,7 @@ namespace OSCiR.Controllers
 
 
         [HttpGet]
-        public async Task<ActionResult<OwnerEntity[]>> Get(string ownerCodeContains, string ownerNameContains)
+        public async Task<ActionResult<OwnerEntity[]>> Get(string ownerCodeEquals, string ownerNameContains)
         {
             //TODO paging result
             var authorizationResult = await _authorizationService.AuthorizeAsync(User, new OwnerEntity(), Operations.Read);
@@ -41,7 +41,7 @@ namespace OSCiR.Controllers
 
             try
             {
-                var ownerReply = _ownerManager.GetOwners(ownerCodeContains, ownerNameContains);
+                var ownerReply = _ownerManager.GetOwners(ownerCodeEquals, ownerNameContains);
 
                 return Ok(ownerReply);
             }

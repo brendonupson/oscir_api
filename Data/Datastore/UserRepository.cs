@@ -1,15 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
-using System.Security.Claims;
-using System.Text;
 using System.Threading.Tasks;
 using Application.Interfaces;
 using OSCiR.Model;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.IdentityModel.Tokens;
-using Newtonsoft.Json;
 using DomainLayer.Exceptions;
 
 namespace OSCiR.Datastore
@@ -124,7 +119,7 @@ namespace OSCiR.Datastore
 
         public UserEntity GetByUserName(string username)
         {
-            return _userSet.SingleOrDefault(x => x.Username.ToLower() == username.ToLower());
+            return _userSet.AsNoTracking().SingleOrDefault(x => x.Username.ToLower() == username.ToLower());
         }
     }
 }

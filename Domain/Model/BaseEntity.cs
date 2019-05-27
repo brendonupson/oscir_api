@@ -22,6 +22,11 @@ namespace OSCiR.Model
         public DateTime CreatedOn { get; set; }
         public string CreatedBy { get; set; }
 
+        //These will be null unless the record is actally deleted
+        //This provides a "soft delete" capability
+        public DateTime? DeletedOn { get; set; }
+        public string DeletedBy { get; set; }
+
         public BaseEntity()
         {
             Id = Guid.NewGuid();

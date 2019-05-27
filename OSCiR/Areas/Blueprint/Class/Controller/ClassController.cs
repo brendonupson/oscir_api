@@ -28,14 +28,14 @@ namespace OSCiR.Controllers
 
         public ClassController(CMDbContext dbContext, IConfiguration configuration, IAuthorizationService authorizationService)
         {
-            _blueprintManager = new BlueprintManager(new BlueprintRepository(dbContext));
+            _blueprintManager = new BlueprintManager(new BlueprintRepository(dbContext), new ConfigItemRepository(dbContext));
             _authorizationService = authorizationService;
         }
 
 
 
         [HttpGet]
-        public async Task<ActionResult<ClassEntity[]>> GetList(string classNameContains, string classCategoryEquals)
+        public async Task<ActionResult<ClassEntity[]>> GetList(string classNameContains, string classNameEquals, string classCategoryEquals)
         {
             var authorizationResult = await _authorizationService.AuthorizeAsync(User, new ClassEntity(), Operations.Read);
             if (!authorizationResult.Succeeded)
@@ -45,7 +45,7 @@ namespace OSCiR.Controllers
 
             try
             {
-                var classReply = _blueprintManager.ReadClasses(classNameContains, classCategoryEquals);
+                var classReply = _blueprintManager.ReadClasses(classNameContains, classNameEquals, classCategoryEquals);
                 return Ok(classReply);
             }
             catch (Exception e)
@@ -169,7 +169,8 @@ namespace OSCiR.Controllers
 
             try
             {
-                if (!_blueprintManager.DeleteClass(classGuid))
+                var userName = Utils.getCurrentUserName(User);
+                if (!_blueprintManager.DeleteClass(classGuid, userName))
                 {
                     return BadRequest("DeleteClass() failed");
                 }

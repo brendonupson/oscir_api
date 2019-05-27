@@ -36,6 +36,10 @@ namespace OSCiR.Migrations
 
                     b.Property<DateTime>("CreatedOn");
 
+                    b.Property<string>("DeletedBy");
+
+                    b.Property<DateTime?>("DeletedOn");
+
                     b.Property<bool>("IsInstantiable");
 
                     b.Property<bool>("IsPromiscuous");
@@ -63,6 +67,10 @@ namespace OSCiR.Migrations
 
                     b.Property<DateTime>("CreatedOn");
 
+                    b.Property<string>("DeletedBy");
+
+                    b.Property<DateTime?>("DeletedOn");
+
                     b.Property<Guid>("ExtendsClassEntityId");
 
                     b.Property<string>("ModifiedBy");
@@ -71,9 +79,11 @@ namespace OSCiR.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("ClassEntityId");
+
                     b.HasIndex("ExtendsClassEntityId");
 
-                    b.HasIndex("ClassEntityId", "ExtendsClassEntityId")
+                    b.HasIndex("DeletedOn", "ClassEntityId", "ExtendsClassEntityId")
                         .IsUnique();
 
                     b.ToTable("ClassExtend");
@@ -96,6 +106,10 @@ namespace OSCiR.Migrations
 
                     b.Property<string>("DefaultValue");
 
+                    b.Property<string>("DeletedBy");
+
+                    b.Property<DateTime?>("DeletedOn");
+
                     b.Property<string>("DisplayGroup");
 
                     b.Property<string>("DisplayLabel");
@@ -116,7 +130,9 @@ namespace OSCiR.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ClassEntityId", "InternalName")
+                    b.HasIndex("ClassEntityId");
+
+                    b.HasIndex("DeletedOn", "ClassEntityId", "InternalName")
                         .IsUnique();
 
                     b.ToTable("ClassProperty");
@@ -131,6 +147,12 @@ namespace OSCiR.Migrations
 
                     b.Property<DateTime>("CreatedOn");
 
+                    b.Property<string>("DeletedBy");
+
+                    b.Property<DateTime?>("DeletedOn");
+
+                    b.Property<bool>("IsUnique");
+
                     b.Property<string>("ModifiedBy");
 
                     b.Property<DateTime>("ModifiedOn");
@@ -143,9 +165,13 @@ namespace OSCiR.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("SourceClassEntityId");
+
                     b.HasIndex("TargetClassEntityId");
 
-                    b.HasIndex("SourceClassEntityId", "TargetClassEntityId", "RelationshipDescription")
+                    b.HasIndex("DeletedOn", "TargetClassEntityId");
+
+                    b.HasIndex("DeletedOn", "SourceClassEntityId", "TargetClassEntityId", "RelationshipDescription")
                         .IsUnique();
 
                     b.ToTable("ClassRelationship");
@@ -166,6 +192,10 @@ namespace OSCiR.Migrations
 
                     b.Property<DateTime>("CreatedOn");
 
+                    b.Property<string>("DeletedBy");
+
+                    b.Property<DateTime?>("DeletedOn");
+
                     b.Property<string>("ModifiedBy");
 
                     b.Property<DateTime>("ModifiedOn");
@@ -180,9 +210,11 @@ namespace OSCiR.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("ClassEntityId");
+
                     b.HasIndex("OwnerId");
 
-                    b.HasIndex("ClassEntityId", "OwnerId", "Name")
+                    b.HasIndex("DeletedOn", "ClassEntityId", "OwnerId", "Name")
                         .IsUnique();
 
                     b.ToTable("ConfigItem");
@@ -197,6 +229,10 @@ namespace OSCiR.Migrations
 
                     b.Property<DateTime>("CreatedOn");
 
+                    b.Property<string>("DeletedBy");
+
+                    b.Property<DateTime?>("DeletedOn");
+
                     b.Property<string>("ModifiedBy");
 
                     b.Property<DateTime>("ModifiedOn");
@@ -209,9 +245,13 @@ namespace OSCiR.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("SourceConfigItemEntityId");
+
                     b.HasIndex("TargetConfigItemEntityId");
 
-                    b.HasIndex("SourceConfigItemEntityId", "TargetConfigItemEntityId", "RelationshipDescription")
+                    b.HasIndex("DeletedOn", "TargetConfigItemEntityId");
+
+                    b.HasIndex("DeletedOn", "SourceConfigItemEntityId", "TargetConfigItemEntityId", "RelationshipDescription")
                         .IsUnique();
 
                     b.ToTable("ConfigItemRelationship");
@@ -231,6 +271,10 @@ namespace OSCiR.Migrations
                     b.Property<string>("CreatedBy");
 
                     b.Property<DateTime>("CreatedOn");
+
+                    b.Property<string>("DeletedBy");
+
+                    b.Property<DateTime?>("DeletedOn");
 
                     b.Property<string>("ModifiedBy");
 
@@ -257,6 +301,10 @@ namespace OSCiR.Migrations
                     b.Property<string>("CreatedBy");
 
                     b.Property<DateTime>("CreatedOn");
+
+                    b.Property<string>("DeletedBy");
+
+                    b.Property<DateTime?>("DeletedOn");
 
                     b.Property<string>("FirstName");
 

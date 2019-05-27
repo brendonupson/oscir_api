@@ -9,6 +9,8 @@ using OSCiR.Model;
 using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;
 using OSCiR.Shared;
+using DomainLayer.Exceptions;
+
 
 namespace App
 {
@@ -16,11 +18,17 @@ namespace App
     {
         IUserData _userRepo;
         string _secret;
+        private IUserData userRepository;
 
         public UserManager(IUserData userRepo, string secret)
         {
             _userRepo = userRepo;
             _secret = secret;
+        }
+
+        public UserManager(IUserData userRepository)
+        {
+            this.userRepository = userRepository;
         }
 
         public UserEntity GenerateDefaultUser(string password)
@@ -70,6 +78,11 @@ namespace App
 
         public UserEntity GetUser(Guid id)
         {
+            if (id == Guid.Empty)
+            {
+                throw new DataReadException("Invalid userId passed");
+            }
+
             return _userRepo.Read(id);
         }
 
@@ -77,7 +90,7 @@ namespace App
         {
             if (username == null || password == null) return null;
 
-            var user = _userRepo.GetByUserName(username.ToLower());
+            var user = _userRepo.GetByUserName(username);
 
             // return null if user not found
             if (user == null) return null;
@@ -91,7 +104,7 @@ namespace App
                 var updateUser = _userRepo.Read(user.Id);
                 updateUser.LastLogin = DateTime.Now;
 
-                _userRepo.Update(updateUser, false);               
+                _userRepo.Update(updateUser, false);
             }
 #pragma warning disable RECS0022 // A catch clause that catches System.Exception and has an empty body
             catch (Exception) { } //ignore any errors

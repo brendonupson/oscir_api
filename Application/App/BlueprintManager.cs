@@ -11,12 +11,13 @@ namespace App
     public class BlueprintManager
     {
         IBlueprintData _blueprintRepo;
+        IConfigItemData _configItemRepo;
 
-
-        public BlueprintManager(IBlueprintData blueprintRepo)
+        public BlueprintManager(IBlueprintData blueprintRepo, IConfigItemData configItemRepo)
         {
             _blueprintRepo = blueprintRepo;
-        }
+            _configItemRepo = configItemRepo;
+    }
 
         public ClassEntity CreateClass(ClassEntity classEntity)
         {
@@ -38,14 +39,34 @@ namespace App
             return _blueprintRepo.UpdateClass(classEntity);
         }
 
-        public bool DeleteClass(Guid classGuid)
+        public bool DeleteClass(Guid classGuid, string userName)
         {
-            return _blueprintRepo.DeleteClass(classGuid);
+            DataSetPager pager = new DataSetPager();
+            var configItemList = _configItemRepo.GetConfigItemsForClassOrOwner(pager, classGuid, null, null, null, null);
+            if(configItemList.Count()>0)
+            {
+                throw new DataWriteException("Cannot delete Class while ConfigItems using this class exist");
+            }
+
+            var classEntity = _blueprintRepo.ReadClasses(new Guid[] { classGuid }).FirstOrDefault();                
+            if (classEntity!=null && _blueprintRepo.DeleteClass(classGuid, userName))
+            {
+                foreach(var rel in classEntity.SourceRelationships)
+                {
+                    _blueprintRepo.DeleteClassRelationship(rel.Id, userName);
+                }
+                foreach (var rel in classEntity.TargetRelationships)
+                {
+                    _blueprintRepo.DeleteClassRelationship(rel.Id, userName);
+                }
+                return true;
+            }
+            return false;
         }
 
-        public IEnumerable<ClassEntity> ReadClasses(string classNameContains, string classCategoryEquals)
+        public IEnumerable<ClassEntity> ReadClasses(string classNameContains, string classNameEquals, string classCategoryEquals)
         {
-            return _blueprintRepo.ReadClasses(classNameContains, classCategoryEquals);
+            return _blueprintRepo.ReadClasses(classNameContains, classNameEquals, classCategoryEquals);
         }
 
         public ClassRelationshipEntity CreateClassRelationship(ClassRelationshipEntity relationshipEntity)
@@ -103,9 +124,9 @@ namespace App
             return _blueprintRepo.CreateClassProperty(classPropertyEntity);
         }
 
-        public bool DeleteClassRelationship(Guid classRelationshipGuid)
+        public bool DeleteClassRelationship(Guid classRelationshipGuid, string userName)
         {
-            return _blueprintRepo.DeleteClassRelationship(classRelationshipGuid);
+            return _blueprintRepo.DeleteClassRelationship(classRelationshipGuid, userName);
         }
 
         public ClassEntity GetClassFullPropertyDefinition(Guid classEntityId)
@@ -115,7 +136,10 @@ namespace App
 
         public ConfigItemEntity GetConfigItemExample(Guid classEntityGuid)
         {
-            if (classEntityGuid == null) return null;
+            if (classEntityGuid==Guid.Empty)
+            {
+                throw new DataReadException("Invalid classEntityGuid passed");
+            }
 
             try
             {

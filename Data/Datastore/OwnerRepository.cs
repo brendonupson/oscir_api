@@ -52,48 +52,18 @@ namespace OSCiR.Datastore
             return true;
         }
 
-        public IEnumerable<OwnerEntity> GetOwners(string ownerCodeContains, string ownerNameContains)
+        public IEnumerable<OwnerEntity> GetOwners(string ownerCodeEquals, string ownerNameContains)
         {
 
             try
             {
-                //this seems a bit rubbish. Need to see if Linq can do dynamic queries based on input parameters
-                if (ownerCodeContains != null && ownerCodeContains.Length > 0 &&
-                ownerNameContains != null && ownerNameContains.Length > 0)
-                {
-                    var ownerResults = _ownerSet.Where(a => (a.OwnerCode.ToLower().Contains(ownerCodeContains.ToLower()) &&
-                            a.OwnerName.ToLower().Contains(ownerNameContains.ToLower())))
+                var ownerResults = _ownerSet.Where(a => (String.IsNullOrEmpty(ownerCodeEquals) || a.OwnerCode.ToLower().Equals(ownerCodeEquals.ToLower())) &&
+                                                        (String.IsNullOrEmpty(ownerNameContains) || a.OwnerName.ToLower().Contains(ownerNameContains.ToLower())))
                             .OrderBy(o => o.OwnerCode)
                             .ThenBy(x => x.OwnerName)
                             .AsNoTracking().ToList<OwnerEntity>();
-                    return ownerResults;
-                }
+                return ownerResults;
 
-
-                if (ownerCodeContains != null && ownerCodeContains.Length > 0)
-                {
-                    var ownerResults = _ownerSet.Where(a => a.OwnerCode.ToLower().Contains(ownerCodeContains.ToLower()))
-                            .OrderBy(o => o.OwnerCode)
-                            .ThenBy(x => x.OwnerName)
-                            .AsNoTracking().ToList<OwnerEntity>();
-                    return ownerResults;
-                }
-
-                if (ownerNameContains != null && ownerNameContains.Length > 0)
-                {
-                    var ownerResults = _ownerSet.Where(a => a.OwnerName.ToLower().Contains(ownerNameContains.ToLower()))
-                            .OrderBy(o => o.OwnerCode)
-                            .ThenBy(x => x.OwnerName)
-                            .AsNoTracking().ToList<OwnerEntity>();
-                    return ownerResults;
-                }
-
-
-                var result = _ownerSet
-                            .OrderBy(o => o.OwnerCode)
-                            .ThenBy(x => x.OwnerName)
-                            .AsNoTracking().ToList<OwnerEntity>();
-                return result;
             }
             catch (Exception e)
             {

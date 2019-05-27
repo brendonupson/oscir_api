@@ -38,7 +38,6 @@ namespace OSCiR.Model
 
         public void SetPassword(string password)
         {
-            //Password = HashPasswordV3(newPassword, _rng, SALT_SIZE, );
             if (password == null)
                 throw new ArgumentNullException(nameof(password));
 
@@ -48,6 +47,8 @@ namespace OSCiR.Model
 
         public bool IsPasswordMatch(string providedPassword)
         {
+            if (PasswordHash == null || providedPassword==null) return false;
+
             byte[] decodedHashedPassword = Convert.FromBase64String(PasswordHash);
             int itCount = IterationCount;
             return VerifyHashedPasswordV3(decodedHashedPassword, providedPassword, out itCount);
