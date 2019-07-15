@@ -36,9 +36,9 @@ namespace App
             return _ownerRepo.Update(ownerEntity);
         }
 
-        public IEnumerable<OwnerEntity> GetOwners(string ownerCodeEquals, string ownerNameContains)
+        public IEnumerable<OwnerEntity> GetOwners(string ownerCodeEquals, string ownerNameContains, bool getUsedOwnersOnly)
         {
-            var owners = _ownerRepo.GetOwners(ownerCodeEquals, ownerNameContains);
+            var owners = _ownerRepo.GetOwners(ownerCodeEquals, ownerNameContains, getUsedOwnersOnly);
             return owners;
         }
 

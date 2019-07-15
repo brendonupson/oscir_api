@@ -112,6 +112,11 @@ namespace App
 
             }
 
+            if(string.IsNullOrEmpty(relationshipDescription))
+            {
+                throw new DataWriteException("Cannot add a relationship without a description");
+            }
+
             ConfigItemRelationshipEntity configItemRelationshipEntity = new ConfigItemRelationshipEntity()
             {
                 SourceConfigItemEntityId = sourceConfigItemId,

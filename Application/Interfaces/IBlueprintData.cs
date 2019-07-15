@@ -13,7 +13,7 @@ namespace Application.Interfaces
         bool DeleteClass(Guid classGuid, string userName);
 
         IEnumerable<ClassEntity> ReadClasses(Guid[] classGuids);
-        IEnumerable<ClassEntity> ReadClasses(string classNameContains, string classNameEquals, string classCategoryEquals);
+        IEnumerable<ClassEntity> ReadClasses(string classNameContains, string classNameEquals, string classCategoryEquals, bool getUsedClassesOnly);
         ClassEntity GetClassFullPropertyDefinition(Guid classGuid);
 
 

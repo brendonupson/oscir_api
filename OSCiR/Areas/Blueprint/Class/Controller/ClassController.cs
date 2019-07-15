@@ -35,7 +35,7 @@ namespace OSCiR.Controllers
 
 
         [HttpGet]
-        public async Task<ActionResult<ClassEntity[]>> GetList(string classNameContains, string classNameEquals, string classCategoryEquals)
+        public async Task<ActionResult<ClassEntity[]>> GetList(string classNameContains, string classNameEquals, string classCategoryEquals, bool getUsedClassesOnly)
         {
             var authorizationResult = await _authorizationService.AuthorizeAsync(User, new ClassEntity(), Operations.Read);
             if (!authorizationResult.Succeeded)
@@ -45,7 +45,7 @@ namespace OSCiR.Controllers
 
             try
             {
-                var classReply = _blueprintManager.ReadClasses(classNameContains, classNameEquals, classCategoryEquals);
+                var classReply = _blueprintManager.ReadClasses(classNameContains, classNameEquals, classCategoryEquals, getUsedClassesOnly);
                 return Ok(classReply);
             }
             catch (Exception e)

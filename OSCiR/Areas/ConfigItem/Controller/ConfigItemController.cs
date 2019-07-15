@@ -216,5 +216,33 @@ namespace OSCiR.Controllers
                 return BadRequest(e.ToString());
             }
         }
+
+        
+        [HttpDelete()]
+        public async Task<object> BulkDelete([FromBody] Guid[] configItemIds)
+        {
+            var authorizationResult = await _authorizationService.AuthorizeAsync(User, new ConfigItemEntity(), Operations.Delete);
+            if (!authorizationResult.Succeeded)
+            {
+                return Unauthorized();
+            }
+
+            try
+            {
+                var userName = Utils.getCurrentUserName(User);
+                foreach (var configItemId in configItemIds)
+                {
+                    if (!_configItemManager.DeleteConfigItem(configItemId, userName))
+                    {
+                        return BadRequest("Delete failed for " + configItemId); //stop on first error
+                    }
+                }
+                return Ok();
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.ToString());
+            }
+        }
     }
 }

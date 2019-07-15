@@ -64,9 +64,9 @@ namespace App
             return false;
         }
 
-        public IEnumerable<ClassEntity> ReadClasses(string classNameContains, string classNameEquals, string classCategoryEquals)
+        public IEnumerable<ClassEntity> ReadClasses(string classNameContains, string classNameEquals, string classCategoryEquals, bool getUsedClassesOnly)
         {
-            return _blueprintRepo.ReadClasses(classNameContains, classNameEquals, classCategoryEquals);
+            return _blueprintRepo.ReadClasses(classNameContains, classNameEquals, classCategoryEquals, getUsedClassesOnly);
         }
 
         public ClassRelationshipEntity CreateClassRelationship(ClassRelationshipEntity relationshipEntity)

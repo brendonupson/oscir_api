@@ -17,6 +17,8 @@ namespace OSCiR.Datastore
         private DbSet<ClassExtendEntity> _classExtendSet { get; set; }
         private DbSet<ClassRelationshipEntity> _classRelationshipSet { get; set; }
 
+        private DbSet<ConfigItemEntity> _configItemSet { get; set; }
+
 
         public BlueprintRepository(DbContext dbContext)
         {
@@ -25,6 +27,8 @@ namespace OSCiR.Datastore
             _classPropertySet = _dbContext.Set<ClassPropertyEntity>();
             _classExtendSet = _dbContext.Set<ClassExtendEntity>();
             _classRelationshipSet = _dbContext.Set<ClassRelationshipEntity>();
+
+            _configItemSet = _dbContext.Set<ConfigItemEntity>();
         }
 
         public IEnumerable<ClassEntity> ReadClasses(Guid[] classGuids)
@@ -71,14 +75,15 @@ namespace OSCiR.Datastore
             }
         }
 
-        public IEnumerable<ClassEntity> ReadClasses(string classNameContains, string classNameEquals, string classCategoryEquals)
+        public IEnumerable<ClassEntity> ReadClasses(string classNameContains, string classNameEquals, string classCategoryEquals, bool getUsedClassesOnly)
         {
 
             try
             {
-                var classResults = _classSet.Where(a => ((String.IsNullOrEmpty(classNameContains) || a.ClassName.ToLower().Contains(classNameContains.ToLower())) &&
+                var classResults = _classSet.Where(a => (String.IsNullOrEmpty(classNameContains) || a.ClassName.ToLower().Contains(classNameContains.ToLower())) &&
                                                             (String.IsNullOrEmpty(classNameEquals) || a.ClassName.ToLower().Equals(classNameEquals.ToLower())) &&
-                                                            (String.IsNullOrEmpty(classCategoryEquals) || a.Category.ToLower().Equals(classCategoryEquals.ToLower()))))
+                                                            (String.IsNullOrEmpty(classCategoryEquals) || a.Category.ToLower().Equals(classCategoryEquals.ToLower())) &&
+                                                            (!getUsedClassesOnly || _configItemSet.Where(ci => ci.ClassEntityId == a.Id).Count()>0 ))
                             .OrderBy(o => o.ClassName)
                             .AsNoTracking().ToList<ClassEntity>();
                 return classResults;

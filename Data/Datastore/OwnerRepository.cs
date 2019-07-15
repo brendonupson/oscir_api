@@ -13,17 +13,21 @@ namespace OSCiR.Datastore
         private DbContext _dbContext;
         private DbSet<OwnerEntity> _ownerSet { get; set; }
 
+        private DbSet<ConfigItemEntity> _configItemSet { get; set; }
+
 
         public OwnerRepository(DbContext dbContext)
         {
             _dbContext = dbContext;
             _ownerSet = _dbContext.Set<OwnerEntity>();
+
+            _configItemSet = _dbContext.Set<ConfigItemEntity>();
         }
 
         public OwnerEntity Read(Guid ownerGuid)
         {
 
-            if (ownerGuid == null || ownerGuid==Guid.Empty) throw new DataReadException("Invalid Guid passed to Read()");
+            if (ownerGuid==Guid.Empty) throw new DataReadException("Invalid Guid passed to Read()");
 
             try
             {
@@ -52,13 +56,14 @@ namespace OSCiR.Datastore
             return true;
         }
 
-        public IEnumerable<OwnerEntity> GetOwners(string ownerCodeEquals, string ownerNameContains)
+        public IEnumerable<OwnerEntity> GetOwners(string ownerCodeEquals, string ownerNameContains, bool getUsedOwnersOnly)
         {
 
             try
             {
                 var ownerResults = _ownerSet.Where(a => (String.IsNullOrEmpty(ownerCodeEquals) || a.OwnerCode.ToLower().Equals(ownerCodeEquals.ToLower())) &&
-                                                        (String.IsNullOrEmpty(ownerNameContains) || a.OwnerName.ToLower().Contains(ownerNameContains.ToLower())))
+                                                        (String.IsNullOrEmpty(ownerNameContains) || a.OwnerName.ToLower().Contains(ownerNameContains.ToLower())) &&
+                                                        (!getUsedOwnersOnly || _configItemSet.Where(ci => ci.OwnerId == a.Id).Count() > 0))
                             .OrderBy(o => o.OwnerCode)
                             .ThenBy(x => x.OwnerName)
                             .AsNoTracking().ToList<OwnerEntity>();

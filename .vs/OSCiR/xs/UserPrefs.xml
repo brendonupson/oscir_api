@@ -2,12 +2,15 @@
   <MonoDevelop.Ide.ItemProperties.ApplicationLayer PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.ItemProperties.OSCiR PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.ItemProperties.OSCiR__xUnit PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="OSCiR/Areas/Shared/CMDbContext.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Data/Datastore/OwnerRepository.cs">
     <Files>
-      <File FileName="Application/App/BlueprintManager.cs" Line="51" Column="1" />
-      <File FileName="Application/App/ConfigItemManager.cs" Line="192" Column="9" />
-      <File FileName="Data/Datastore/ConfigItemRepository.cs" Line="212" Column="14" />
-      <File FileName="OSCiR/Areas/Shared/CMDbContext.cs" Line="97" Column="59" />
+      <File FileName="OSCiR/Areas/Blueprint/Class/Controller/ClassController.cs" Line="48" Column="58" />
+      <File FileName="Application/App/BlueprintManager.cs" Line="71" Column="1" />
+      <File FileName="Data/Datastore/BlueprintRepository.cs" Line="83" Column="1" />
+      <File FileName="OSCiR/Areas/Owner/Controller/OwnerController.cs" Line="46" Column="39" />
+      <File FileName="Application/App/OwnerManager.cs" Line="41" Column="100" />
+      <File FileName="Application/Interfaces/IOwnerData.cs" Line="15" Column="116" />
+      <File FileName="Data/Datastore/OwnerRepository.cs" Line="26" Column="17" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -15,28 +18,17 @@
           <Node name="OSCiR" expanded="True">
             <Node name="ApplicationLayer" expanded="True">
               <Node name="App" expanded="True" />
+              <Node name="Interfaces" expanded="True" />
             </Node>
             <Node name="DataLayer" expanded="True">
-              <Node name="Datastore" expanded="True" />
-            </Node>
-            <Node name="OSCiR" expanded="True">
-              <Node name="Areas" expanded="True">
-                <Node name="Owner" expanded="True">
-                  <Node name="Controller" expanded="True" />
-                </Node>
-                <Node name="Shared" expanded="True">
-                  <Node name="Auth" expanded="True" />
-                  <Node name="CMDbContext.cs" selected="True" />
-                </Node>
+              <Node name="Datastore" expanded="True">
+                <Node name="OwnerRepository.cs" selected="True" />
               </Node>
             </Node>
+            <Node name="DomainLayer" expanded="True" />
+            <Node name="OSCiR" expanded="True" />
             <Node name="OSCiR_xUnit" expanded="True" />
           </Node>
-        </State>
-      </Pad>
-      <Pad Id="MonoDevelop.UnitTesting.TestPad">
-        <State name="__root__">
-          <Node name="OSCiR" expanded="True" selected="True" />
         </State>
       </Pad>
     </Pads>
