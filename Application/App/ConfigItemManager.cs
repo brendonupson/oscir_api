@@ -189,49 +189,7 @@ namespace App
             ConfigItemManager.ProcessProperties(configItemEntity, ce);
             return configItemEntity;
         }
-        /*
-        public static dynamic Merge(object item1, object item2)
-        {
-            if (item1 == null || item2 == null)
-                return item1 ?? item2 ?? new ExpandoObject();
-
-            dynamic expando = new ExpandoObject();
-            var result = expando as IDictionary<string, object>;
-            foreach (System.Reflection.PropertyInfo fi in item1.GetType().GetProperties())
-            {
-                result[fi.Name] = fi.GetValue(item1, null);
-            }
-            foreach (System.Reflection.PropertyInfo fi in item2.GetType().GetProperties())
-            {
-                result[fi.Name] = fi.GetValue(item2, null);
-            }
-            return result;
-        }
-
-        public static void Main(string[] args)
-        {
-            var props = new
-            {
-                p1 = (string)null,
-                p2= "a2",
-                p3 = "p3"
-
-            };
-
-
-            ConfigItemEntity ci = new ConfigItemEntity()
-            {
-                Name = "Bill",
-                Properties = JObject.FromObject(props)
-            };
-
-           
-            string strPatch = "{ \"Name\": \"something\", \"Properties\": {\"p1\": \"p1\"} }";
-            var patch = JsonConvert.DeserializeObject(strPatch);
-
-            var merged = MergeObjects(JObject.FromObject(ci), JObject.FromObject(patch));
-            Console.WriteLine(JsonConvert.SerializeObject(merged, Formatting.Indented));
-        }*/
+        
 
         public static JObject MergeObjects(JObject source, JObject master)
         {

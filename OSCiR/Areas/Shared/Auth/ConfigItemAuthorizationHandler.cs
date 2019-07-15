@@ -12,6 +12,12 @@ namespace OSCiR.Areas.Shared.Auth
 
         protected override Task HandleRequirementAsync(AuthorizationHandlerContext context, OperationAuthorizationRequirement requirement, ConfigItemEntity resource)
         {
+            if (context.User.Identity.IsAuthenticated)
+            {
+                context.Succeed(requirement);
+            }
+
+            /*
             if (requirement.Name == Operations.Read.Name)
             {
                 context.Succeed(requirement);
@@ -20,6 +26,7 @@ namespace OSCiR.Areas.Shared.Auth
             {
                 if (context.User.IsInRole(UserRoles.Admin)) context.Succeed(requirement);
             }
+            */
 
 
             return Task.CompletedTask;
@@ -32,14 +39,19 @@ namespace OSCiR.Areas.Shared.Auth
 
         protected override Task HandleRequirementAsync(AuthorizationHandlerContext context, OperationAuthorizationRequirement requirement, ConfigItemRelationshipEntity resource)
         {
-            if (requirement.Name == Operations.Read.Name)
+            if (context.User.Identity.IsAuthenticated)
+            {
+                context.Succeed(requirement);
+            }
+
+            /*if (requirement.Name == Operations.Read.Name)
             {
                 context.Succeed(requirement);
             }
             else //assume Create, Update, or Delete
             {
                 if (context.User.IsInRole(UserRoles.Admin)) context.Succeed(requirement);
-            }
+            }*/
 
 
             return Task.CompletedTask;

@@ -2,41 +2,41 @@
   <MonoDevelop.Ide.ItemProperties.ApplicationLayer PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.ItemProperties.OSCiR PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.ItemProperties.OSCiR__xUnit PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Application/App/ConfigItemManager.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="OSCiR/Areas/Shared/CMDbContext.cs">
     <Files>
       <File FileName="Application/App/BlueprintManager.cs" Line="51" Column="1" />
-      <File FileName="Data/Datastore/BlueprintRepository.cs" Line="361" Column="42" />
-      <File FileName="Application/Interfaces/IBlueprintData.cs" Line="25" Column="82" />
-      <File FileName="Application/App/ConfigItemManager.cs" Line="272" Column="13" />
+      <File FileName="Application/App/ConfigItemManager.cs" Line="192" Column="9" />
+      <File FileName="Data/Datastore/ConfigItemRepository.cs" Line="212" Column="14" />
+      <File FileName="OSCiR/Areas/Shared/CMDbContext.cs" Line="97" Column="59" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="OSCiR" expanded="True">
             <Node name="ApplicationLayer" expanded="True">
-              <Node name="App" expanded="True">
-                <Node name="ConfigItemManager.cs" selected="True" />
-              </Node>
-              <Node name="Interfaces" expanded="True" />
+              <Node name="App" expanded="True" />
+            </Node>
+            <Node name="DataLayer" expanded="True">
+              <Node name="Datastore" expanded="True" />
             </Node>
             <Node name="OSCiR" expanded="True">
-              <Node name="Dependencies" expanded="True">
-                <Node name="PackageDependencies" expanded="True" />
-              </Node>
               <Node name="Areas" expanded="True">
-                <Node name="Blueprint" expanded="True">
-                  <Node name="Class" expanded="True">
-                    <Node name="Controller" expanded="True" />
-                  </Node>
-                </Node>
-                <Node name="ConfigItem" expanded="True">
+                <Node name="Owner" expanded="True">
                   <Node name="Controller" expanded="True" />
                 </Node>
+                <Node name="Shared" expanded="True">
+                  <Node name="Auth" expanded="True" />
+                  <Node name="CMDbContext.cs" selected="True" />
+                </Node>
               </Node>
-              <Node name="Migrations" expanded="True" />
             </Node>
             <Node name="OSCiR_xUnit" expanded="True" />
           </Node>
+        </State>
+      </Pad>
+      <Pad Id="MonoDevelop.UnitTesting.TestPad">
+        <State name="__root__">
+          <Node name="OSCiR" expanded="True" selected="True" />
         </State>
       </Pad>
     </Pads>

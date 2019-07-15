@@ -1,9 +1,3 @@
-/Users/bupson/Projects/oscir_api/Application/obj/Debug/netcoreapp2.2/ApplicationLayer.csprojAssemblyReference.cache
-/Users/bupson/Projects/oscir_api/Application/obj/Debug/netcoreapp2.2/ApplicationLayer.csproj.CoreCompileInputs.cache
-/Users/bupson/Projects/oscir_api/Application/obj/Debug/netcoreapp2.2/ApplicationLayer.RazorAssemblyInfo.cache
-/Users/bupson/Projects/oscir_api/Application/obj/Debug/netcoreapp2.2/ApplicationLayer.RazorAssemblyInfo.cs
-/Users/bupson/Projects/oscir_api/Application/obj/Debug/netcoreapp2.2/ApplicationLayer.AssemblyInfoInputs.cache
-/Users/bupson/Projects/oscir_api/Application/obj/Debug/netcoreapp2.2/ApplicationLayer.AssemblyInfo.cs
 /Users/bupson/Projects/oscir_api/Application/bin/Debug/netcoreapp2.2/ApplicationLayer.deps.json
 /Users/bupson/Projects/oscir_api/Application/bin/Debug/netcoreapp2.2/ApplicationLayer.runtimeconfig.json
 /Users/bupson/Projects/oscir_api/Application/bin/Debug/netcoreapp2.2/ApplicationLayer.runtimeconfig.dev.json
@@ -11,6 +5,12 @@
 /Users/bupson/Projects/oscir_api/Application/bin/Debug/netcoreapp2.2/ApplicationLayer.pdb
 /Users/bupson/Projects/oscir_api/Application/bin/Debug/netcoreapp2.2/DomainLayer.dll
 /Users/bupson/Projects/oscir_api/Application/bin/Debug/netcoreapp2.2/DomainLayer.pdb
+/Users/bupson/Projects/oscir_api/Application/obj/Debug/netcoreapp2.2/ApplicationLayer.csprojAssemblyReference.cache
+/Users/bupson/Projects/oscir_api/Application/obj/Debug/netcoreapp2.2/ApplicationLayer.csproj.CoreCompileInputs.cache
+/Users/bupson/Projects/oscir_api/Application/obj/Debug/netcoreapp2.2/ApplicationLayer.RazorAssemblyInfo.cache
+/Users/bupson/Projects/oscir_api/Application/obj/Debug/netcoreapp2.2/ApplicationLayer.RazorAssemblyInfo.cs
+/Users/bupson/Projects/oscir_api/Application/obj/Debug/netcoreapp2.2/ApplicationLayer.AssemblyInfoInputs.cache
+/Users/bupson/Projects/oscir_api/Application/obj/Debug/netcoreapp2.2/ApplicationLayer.AssemblyInfo.cs
 /Users/bupson/Projects/oscir_api/Application/obj/Debug/netcoreapp2.2/ApplicationLayer.RazorTargetAssemblyInfo.cache
 /Users/bupson/Projects/oscir_api/Application/obj/Debug/netcoreapp2.2/ApplicationLayer.csproj.CopyComplete
 /Users/bupson/Projects/oscir_api/Application/obj/Debug/netcoreapp2.2/ApplicationLayer.dll

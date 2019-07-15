@@ -93,6 +93,8 @@ namespace OSCiR.Areas.Shared
             modelBuilder.Entity<ClassPropertyEntity>()
                 .HasIndex(p => new { p.DeletedOn, p.ClassEntityId, p.InternalName }).IsUnique();
 
+            modelBuilder.Entity<ClassEntity>()
+                .HasIndex(p => new { p.DeletedOn, p.Id });
 
 
             //allow multiple relationships between two CIs, but only one of each type
