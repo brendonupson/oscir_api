@@ -2,33 +2,37 @@
   <MonoDevelop.Ide.ItemProperties.ApplicationLayer PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.ItemProperties.OSCiR PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.ItemProperties.OSCiR__xUnit PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Data/Datastore/OwnerRepository.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Application/App/ConfigItemManager.cs">
     <Files>
       <File FileName="OSCiR/Areas/Blueprint/Class/Controller/ClassController.cs" Line="48" Column="58" />
-      <File FileName="Application/App/BlueprintManager.cs" Line="71" Column="1" />
-      <File FileName="Data/Datastore/BlueprintRepository.cs" Line="83" Column="1" />
-      <File FileName="OSCiR/Areas/Owner/Controller/OwnerController.cs" Line="46" Column="39" />
-      <File FileName="Application/App/OwnerManager.cs" Line="41" Column="100" />
-      <File FileName="Application/Interfaces/IOwnerData.cs" Line="15" Column="116" />
-      <File FileName="Data/Datastore/OwnerRepository.cs" Line="26" Column="17" />
+      <File FileName="Application/App/BlueprintManager.cs" />
+      <File FileName="Data/Datastore/BlueprintRepository.cs" />
+      <File FileName="OSCiR/Areas/Owner/Controller/OwnerController.cs" />
+      <File FileName="Application/App/OwnerManager.cs" />
+      <File FileName="Application/Interfaces/IOwnerData.cs" />
+      <File FileName="Data/Datastore/OwnerRepository.cs" Line="66" Column="140" />
+      <File FileName="Application/App/ConfigItemManager.cs" Line="27" Column="22" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="OSCiR" expanded="True">
             <Node name="ApplicationLayer" expanded="True">
-              <Node name="App" expanded="True" />
-              <Node name="Interfaces" expanded="True" />
-            </Node>
-            <Node name="DataLayer" expanded="True">
-              <Node name="Datastore" expanded="True">
-                <Node name="OwnerRepository.cs" selected="True" />
+              <Node name="App" expanded="True">
+                <Node name="ConfigItemManager.cs" selected="True" />
               </Node>
             </Node>
-            <Node name="DomainLayer" expanded="True" />
-            <Node name="OSCiR" expanded="True" />
-            <Node name="OSCiR_xUnit" expanded="True" />
+            <Node name="OSCiR_xUnit" expanded="True">
+              <Node name="Dependencies" expanded="True">
+                <Node name="PackageDependencies" expanded="True" />
+              </Node>
+            </Node>
           </Node>
+        </State>
+      </Pad>
+      <Pad Id="MonoDevelop.UnitTesting.TestPad">
+        <State name="__root__">
+          <Node name="OSCiR" expanded="True" selected="True" />
         </State>
       </Pad>
     </Pads>

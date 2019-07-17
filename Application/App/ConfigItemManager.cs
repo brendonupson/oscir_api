@@ -92,7 +92,9 @@ namespace App
             }
             else
             {
-                if (relationshipDescription == null || relationshipDescription.Length == 0) relationshipDescription = cr.RelationshipDescription;
+                //The blueprint has defined a relationship, so use the text defined on that relationship
+                relationshipDescription = cr.RelationshipDescription;
+                //if (relationshipDescription == null || relationshipDescription.Length == 0) relationshipDescription = cr.RelationshipDescription;
                 //if the caller is not specifying uniqueness, check the class relationship setting
                 if (!ensureUniqueBetweenClasses) ensureUniqueBetweenClasses = cr.IsUnique;
             }
