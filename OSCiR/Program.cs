@@ -19,6 +19,7 @@ namespace OSCiR
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
+            //.UseLibuv(opts => opts.ThreadCount = 15)
                 .UseStartup<Startup>();
     }
 }

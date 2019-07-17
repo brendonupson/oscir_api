@@ -4,7 +4,7 @@ namespace OSCiR.Model
     public class DataSetPager
     {
         const int DEFAULT_PAGE_SIZE = 100;
-        const int ABSOLUTE_MAX_PAGE_SIZE = 1000;
+        const int ABSOLUTE_MAX_PAGE_SIZE = 10000;
 
         public int TotalRecordCount { get; set; } //Total number of results for entire query
 

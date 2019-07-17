@@ -145,7 +145,7 @@ namespace App
 
         public ConfigItemEntity CreateConfigItem(ConfigItemEntity configItemEntity)
         {
-            if (configItemEntity.OwnerId == null || configItemEntity.OwnerId == Guid.Empty)
+            if (configItemEntity.OwnerId == Guid.Empty)
             {
                 throw new DataWriteException("Owner not specified");
             }
@@ -186,7 +186,8 @@ namespace App
 
         public ConfigItemEntity ProcessProperties(ConfigItemEntity configItemEntity)
         {
-            ClassEntity ce = _blueprintManager.ReadClass(configItemEntity.ClassEntityId);
+            //ClassEntity ce = _blueprintManager.ReadClass(configItemEntity.ClassEntityId);
+            ClassEntity ce = _blueprintManager.GetClassFullPropertyDefinition(configItemEntity.ClassEntityId);
             if (!ce.IsInstantiable)
             {
                 throw new DataWriteException(ce.ClassName + " may not be instantiated to a ConfigItem");
@@ -233,7 +234,7 @@ namespace App
 
             //Make sure property names match, eg "Phone" vs "phone" etc
             var patchConfigItem = patchConfigItemJObject.ToObject<ConfigItemEntity>();
-            if (patchConfigItem.ClassEntityId == null || patchConfigItem.ClassEntityId == Guid.Empty) patchConfigItem.ClassEntityId = configItem.ClassEntityId;
+            if (patchConfigItem.ClassEntityId == Guid.Empty) patchConfigItem.ClassEntityId = configItem.ClassEntityId;
             if (patchConfigItem.Properties == null) patchConfigItem.Properties = new JObject();
             patchConfigItem = ProcessProperties(patchConfigItem);
             patchConfigItemJObject.Remove("properties");
