@@ -2,16 +2,14 @@
   <MonoDevelop.Ide.ItemProperties.ApplicationLayer PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.ItemProperties.OSCiR PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.ItemProperties.OSCiR__xUnit PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Application/App/ConfigItemManager.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Application/App/BlueprintManager.cs">
     <Files>
       <File FileName="OSCiR/Areas/Blueprint/Class/Controller/ClassController.cs" Line="48" Column="58" />
-      <File FileName="Application/App/BlueprintManager.cs" />
+      <File FileName="Application/App/BlueprintManager.cs" Line="111" Column="9" />
       <File FileName="Data/Datastore/BlueprintRepository.cs" />
       <File FileName="OSCiR/Areas/Owner/Controller/OwnerController.cs" />
       <File FileName="Application/App/OwnerManager.cs" />
-      <File FileName="Application/Interfaces/IOwnerData.cs" />
-      <File FileName="Data/Datastore/OwnerRepository.cs" Line="66" Column="140" />
-      <File FileName="Application/App/ConfigItemManager.cs" Line="27" Column="22" />
+      <File FileName="Application/App/ConfigItemManager.cs" Line="79" Column="38" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -19,9 +17,10 @@
           <Node name="OSCiR" expanded="True">
             <Node name="ApplicationLayer" expanded="True">
               <Node name="App" expanded="True">
-                <Node name="ConfigItemManager.cs" selected="True" />
+                <Node name="BlueprintManager.cs" selected="True" />
               </Node>
             </Node>
+            <Node name="DataLayer" expanded="True" />
             <Node name="OSCiR_xUnit" expanded="True">
               <Node name="Dependencies" expanded="True">
                 <Node name="PackageDependencies" expanded="True" />

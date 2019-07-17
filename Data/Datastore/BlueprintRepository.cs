@@ -274,9 +274,16 @@ namespace OSCiR.Datastore
         {
             //FIXME this should be in app layer
 
+            /* //REMOVED so we can't make backward relationships
             //get all class relationships between classes both ways
             var relationships = _classRelationshipSet.Where(a => (a.SourceClassEntityId == sourceClassEntityId && a.TargetClassEntityId == targetClassEntityId) ||
             (a.SourceClassEntityId == targetClassEntityId && a.TargetClassEntityId == sourceClassEntityId))
+                            .OrderBy(o => o.SourceClassEntityId)
+                            .AsNoTracking().ToList<ClassRelationshipEntity>();
+            */
+
+            //Only return the directional relationship requested
+            var relationships = _classRelationshipSet.Where(a => (a.SourceClassEntityId == sourceClassEntityId && a.TargetClassEntityId == targetClassEntityId))
                             .OrderBy(o => o.SourceClassEntityId)
                             .AsNoTracking().ToList<ClassRelationshipEntity>();
             if (relationships.Count == 0) return null;
