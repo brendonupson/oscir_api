@@ -59,9 +59,22 @@ namespace OSCiR.Areas.Admin.Class.Model
                 if(ciList.Count()==1)
                 {
                     var ci = ciList.First();
+                    //do a copy first so we don't get any data concurrency errors
+                    List<ConfigItemRelationshipEntity> relationshipList = new List<ConfigItemRelationshipEntity>();
+                    foreach(var rel in ci.SourceRelationships)
+                    {
+                        relationshipList.Add(rel);
+                    }
+                    foreach (var rel in ci.TargetRelationships)
+                    {
+                        relationshipList.Add(rel);
+                    }
+
                     ci.DeletedOn = DateTime.Now;
                     ci.DeletedBy = userName;
                     UpdateConfigItem(ci);
+                    //Now remove any relationships to or from this ci
+                    DeleteConfigItemRelationships(relationshipList, userName);                    
                     return true;
                 }
                 //_dbContext.Entry(ciToBeDeleted).State = EntityState.Deleted;
@@ -216,14 +229,20 @@ namespace OSCiR.Areas.Admin.Class.Model
             }
         }
 
+        public bool DeleteConfigItemRelationships(IEnumerable<ConfigItemRelationshipEntity> configItemRelationships, string userName)
+        {
+            
+            foreach(var configItemRelationship in configItemRelationships)
+            {
+                DeleteConfigItemRelationship(configItemRelationship.Id, userName);
+            }
+            return true;
+        }
 
         public bool DeleteConfigItemRelationship(Guid configItemRelationshipId, string userName)
         {
             try
-            {
-                //ConfigItemRelationshipEntity ciToBeDeleted = new ConfigItemRelationshipEntity { Id = configItemRelationshipId };
-                //_dbContext.Remove(ciToBeDeleted);
-                //var cir = ReadConfigItemRelationship(configItemRelationshipId);
+            {              
                 ConfigItemRelationshipEntity cir = _cirSet.Where(p => p.Id == configItemRelationshipId).FirstOrDefault();
                 _dbContext.Entry(cir).State = EntityState.Modified;
                 cir.DeletedOn = DateTime.Now;

@@ -372,7 +372,7 @@ namespace App
         }
 
         public bool DeleteConfigItem(Guid configItemId, string userName)
-        {
+        {            
             return _configItemRepo.DeleteConfigItem(configItemId, userName);
         }
     }
