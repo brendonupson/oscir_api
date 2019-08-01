@@ -347,7 +347,7 @@
           "lib/netstandard2.0/Microsoft.AspNetCore.Antiforgery.dll": {}
         }
       },
-      "Microsoft.AspNetCore.App/2.2.5": {
+      "Microsoft.AspNetCore.App/2.2.6": {
         "type": "package",
         "dependencies": {
           "Microsoft.AspNet.WebApi.Client": "[5.2.6, 5.3.0)",
@@ -427,8 +427,8 @@
           "Microsoft.AspNetCore.Rewrite": "[2.2.0, 2.3.0)",
           "Microsoft.AspNetCore.Routing": "[2.2.2, 2.3.0)",
           "Microsoft.AspNetCore.Routing.Abstractions": "[2.2.0, 2.3.0)",
-          "Microsoft.AspNetCore.Server.HttpSys": "[2.2.0, 2.3.0)",
-          "Microsoft.AspNetCore.Server.IIS": "[2.2.2, 2.3.0)",
+          "Microsoft.AspNetCore.Server.HttpSys": "[2.2.6, 2.3.0)",
+          "Microsoft.AspNetCore.Server.IIS": "[2.2.6, 2.3.0)",
           "Microsoft.AspNetCore.Server.IISIntegration": "[2.2.1, 2.3.0)",
           "Microsoft.AspNetCore.Server.Kestrel": "[2.2.0, 2.3.0)",
           "Microsoft.AspNetCore.Server.Kestrel.Core": "[2.2.0, 2.3.0)",
@@ -446,14 +446,14 @@
           "Microsoft.AspNetCore.WebSockets": "[2.2.1, 2.3.0)",
           "Microsoft.AspNetCore.WebUtilities": "[2.2.0, 2.3.0)",
           "Microsoft.CodeAnalysis.Razor": "[2.2.0, 2.3.0)",
-          "Microsoft.EntityFrameworkCore": "[2.2.4, 2.3.0)",
-          "Microsoft.EntityFrameworkCore.Abstractions": "[2.2.4, 2.3.0)",
-          "Microsoft.EntityFrameworkCore.Analyzers": "[2.2.4, 2.3.0)",
-          "Microsoft.EntityFrameworkCore.Design": "[2.2.4, 2.3.0)",
-          "Microsoft.EntityFrameworkCore.InMemory": "[2.2.4, 2.3.0)",
-          "Microsoft.EntityFrameworkCore.Relational": "[2.2.4, 2.3.0)",
-          "Microsoft.EntityFrameworkCore.SqlServer": "[2.2.4, 2.3.0)",
-          "Microsoft.EntityFrameworkCore.Tools": "[2.2.4, 2.3.0)",
+          "Microsoft.EntityFrameworkCore": "[2.2.6, 2.3.0)",
+          "Microsoft.EntityFrameworkCore.Abstractions": "[2.2.6, 2.3.0)",
+          "Microsoft.EntityFrameworkCore.Analyzers": "[2.2.6, 2.3.0)",
+          "Microsoft.EntityFrameworkCore.Design": "[2.2.6, 2.3.0)",
+          "Microsoft.EntityFrameworkCore.InMemory": "[2.2.6, 2.3.0)",
+          "Microsoft.EntityFrameworkCore.Relational": "[2.2.6, 2.3.0)",
+          "Microsoft.EntityFrameworkCore.SqlServer": "[2.2.6, 2.3.0)",
+          "Microsoft.EntityFrameworkCore.Tools": "[2.2.6, 2.3.0)",
           "Microsoft.Extensions.Caching.Abstractions": "[2.2.0, 2.3.0)",
           "Microsoft.Extensions.Caching.Memory": "[2.2.0, 2.3.0)",
           "Microsoft.Extensions.Caching.SqlServer": "[2.2.0, 2.3.0)",
@@ -1626,7 +1626,7 @@
           "lib/netstandard2.0/Microsoft.AspNetCore.Routing.Abstractions.dll": {}
         }
       },
-      "Microsoft.AspNetCore.Server.HttpSys/2.2.0": {
+      "Microsoft.AspNetCore.Server.HttpSys/2.2.6": {
         "type": "package",
         "dependencies": {
           "Microsoft.AspNetCore.Authentication.Core": "2.2.0",
@@ -1642,13 +1642,13 @@
           "lib/netstandard2.0/Microsoft.AspNetCore.Server.HttpSys.dll": {}
         }
       },
-      "Microsoft.AspNetCore.Server.IIS/2.2.2": {
+      "Microsoft.AspNetCore.Server.IIS/2.2.6": {
         "type": "package",
         "dependencies": {
           "Microsoft.AspNetCore.Authentication.Core": "2.2.0",
           "Microsoft.AspNetCore.Connections.Abstractions": "2.2.0",
           "Microsoft.AspNetCore.Hosting.Abstractions": "2.2.0",
-          "System.IO.Pipelines": "4.5.2",
+          "System.IO.Pipelines": "4.5.3",
           "System.Security.Principal.Windows": "4.5.0"
         },
         "compile": {
@@ -2253,11 +2253,11 @@
       "Microsoft.EntityFrameworkCore.Analyzers/2.2.6": {
         "type": "package"
       },
-      "Microsoft.EntityFrameworkCore.Design/2.2.4": {
+      "Microsoft.EntityFrameworkCore.Design/2.2.6": {
         "type": "package",
         "dependencies": {
           "Microsoft.CSharp": "4.5.0",
-          "Microsoft.EntityFrameworkCore.Relational": "2.2.4"
+          "Microsoft.EntityFrameworkCore.Relational": "2.2.6"
         },
         "compile": {
           "lib/netstandard2.0/Microsoft.EntityFrameworkCore.Design.dll": {}
@@ -2269,10 +2269,10 @@
           "build/netcoreapp2.0/Microsoft.EntityFrameworkCore.Design.props": {}
         }
       },
-      "Microsoft.EntityFrameworkCore.InMemory/2.2.4": {
+      "Microsoft.EntityFrameworkCore.InMemory/2.2.6": {
         "type": "package",
         "dependencies": {
-          "Microsoft.EntityFrameworkCore": "2.2.4"
+          "Microsoft.EntityFrameworkCore": "2.2.6"
         },
         "compile": {
           "lib/netstandard2.0/Microsoft.EntityFrameworkCore.InMemory.dll": {}
@@ -2281,10 +2281,10 @@
           "lib/netstandard2.0/Microsoft.EntityFrameworkCore.InMemory.dll": {}
         }
       },
-      "Microsoft.EntityFrameworkCore.Relational/2.2.4": {
+      "Microsoft.EntityFrameworkCore.Relational/2.2.6": {
         "type": "package",
         "dependencies": {
-          "Microsoft.EntityFrameworkCore": "2.2.4"
+          "Microsoft.EntityFrameworkCore": "2.2.6"
         },
         "compile": {
           "lib/netstandard2.0/Microsoft.EntityFrameworkCore.Relational.dll": {}
@@ -2320,11 +2320,11 @@
           "lib/netstandard2.0/Microsoft.EntityFrameworkCore.Sqlite.dll": {}
         }
       },
-      "Microsoft.EntityFrameworkCore.SqlServer/2.2.4": {
+      "Microsoft.EntityFrameworkCore.SqlServer/2.2.6": {
         "type": "package",
         "dependencies": {
-          "Microsoft.EntityFrameworkCore.Relational": "2.2.4",
-          "System.Data.SqlClient": "4.6.0"
+          "Microsoft.EntityFrameworkCore.Relational": "2.2.6",
+          "System.Data.SqlClient": "4.6.1"
         },
         "compile": {
           "lib/netstandard2.0/Microsoft.EntityFrameworkCore.SqlServer.dll": {}
@@ -2333,10 +2333,10 @@
           "lib/netstandard2.0/Microsoft.EntityFrameworkCore.SqlServer.dll": {}
         }
       },
-      "Microsoft.EntityFrameworkCore.Tools/2.2.4": {
+      "Microsoft.EntityFrameworkCore.Tools/2.2.6": {
         "type": "package",
         "dependencies": {
-          "Microsoft.EntityFrameworkCore.Design": "2.2.4"
+          "Microsoft.EntityFrameworkCore.Design": "2.2.6"
         },
         "compile": {
           "lib/netstandard2.0/_._": {}
@@ -3144,11 +3144,11 @@
           "lib/netstandard2.0/Microsoft.Net.Http.Headers.dll": {}
         }
       },
-      "Microsoft.NETCore.App/2.2.5": {
+      "Microsoft.NETCore.App/2.2.6": {
         "type": "package",
         "dependencies": {
-          "Microsoft.NETCore.DotNetHostPolicy": "2.2.5",
-          "Microsoft.NETCore.Platforms": "2.2.1",
+          "Microsoft.NETCore.DotNetHostPolicy": "2.2.6",
+          "Microsoft.NETCore.Platforms": "2.2.2",
           "Microsoft.NETCore.Targets": "2.0.0",
           "NETStandard.Library": "2.0.3"
         },
@@ -3302,22 +3302,22 @@
           "build/netcoreapp2.2/Microsoft.NETCore.App.targets": {}
         }
       },
-      "Microsoft.NETCore.DotNetAppHost/2.2.5": {
+      "Microsoft.NETCore.DotNetAppHost/2.2.6": {
         "type": "package"
       },
-      "Microsoft.NETCore.DotNetHostPolicy/2.2.5": {
+      "Microsoft.NETCore.DotNetHostPolicy/2.2.6": {
         "type": "package",
         "dependencies": {
-          "Microsoft.NETCore.DotNetHostResolver": "2.2.5"
+          "Microsoft.NETCore.DotNetHostResolver": "2.2.6"
         }
       },
-      "Microsoft.NETCore.DotNetHostResolver/2.2.5": {
+      "Microsoft.NETCore.DotNetHostResolver/2.2.6": {
         "type": "package",
         "dependencies": {
-          "Microsoft.NETCore.DotNetAppHost": "2.2.5"
+          "Microsoft.NETCore.DotNetAppHost": "2.2.6"
         }
       },
-      "Microsoft.NETCore.Platforms/2.2.1": {
+      "Microsoft.NETCore.Platforms/2.2.2": {
         "type": "package",
         "compile": {
           "lib/netstandard1.0/_._": {}
@@ -4089,7 +4089,7 @@
           "ref/netstandard1.3/System.Console.dll": {}
         }
       },
-      "System.Data.SqlClient/4.6.0": {
+      "System.Data.SqlClient/4.6.1": {
         "type": "package",
         "dependencies": {
           "Microsoft.Win32.Registry": "4.5.0",
@@ -5846,17 +5846,17 @@
         "microsoft.aspnetcore.antiforgery.nuspec"
       ]
     },
-    "Microsoft.AspNetCore.App/2.2.5": {
-      "sha512": "CgMcW/GCdpSysNr+4T7N7XVWEpRZTruIGx3EfgqRaqVhNaqyEeEShcJkH/oBlv0wX3D7tXeh81xaxhuRGjMfKQ==",
+    "Microsoft.AspNetCore.App/2.2.6": {
+      "sha512": "sN5qWQZMrtX05SCuTh7AEqW7dB49MtlzrGOYH8inCFGwotY5Xytqe3ljfy0F4xSiNNb07z0Osri+W9Sct2H0JQ==",
       "type": "package",
-      "path": "microsoft.aspnetcore.app/2.2.5",
+      "path": "microsoft.aspnetcore.app/2.2.6",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "build/netcoreapp2.2/Microsoft.AspNetCore.App.props",
         "build/netcoreapp2.2/Microsoft.AspNetCore.App.targets",
         "lib/netcoreapp2.2/_._",
-        "microsoft.aspnetcore.app.2.2.5.nupkg.sha512",
+        "microsoft.aspnetcore.app.2.2.6.nupkg.sha512",
         "microsoft.aspnetcore.app.nuspec"
       ]
     },
@@ -6928,30 +6928,30 @@
         "microsoft.aspnetcore.routing.abstractions.nuspec"
       ]
     },
-    "Microsoft.AspNetCore.Server.HttpSys/2.2.0": {
-      "sha512": "tei37PK4c6CKd7tGgAOkpbePwu8WLjqsEfiAfLbaMXnmp7o30bzcIxtraTrjvq2SpRAFA9p6WwUbmyqQxXPcfQ==",
+    "Microsoft.AspNetCore.Server.HttpSys/2.2.6": {
+      "sha512": "aT/Q1JS9aq5qmYFgEMqksbyP0Q53Qd1M3wOCMa5CMCgzQ4xih/ODiZ/Wq+4uY4TtDW/r1/4JweGbmqwjj41aiw==",
       "type": "package",
-      "path": "microsoft.aspnetcore.server.httpsys/2.2.0",
+      "path": "microsoft.aspnetcore.server.httpsys/2.2.6",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "lib/netstandard2.0/Microsoft.AspNetCore.Server.HttpSys.dll",
         "lib/netstandard2.0/Microsoft.AspNetCore.Server.HttpSys.xml",
-        "microsoft.aspnetcore.server.httpsys.2.2.0.nupkg.sha512",
+        "microsoft.aspnetcore.server.httpsys.2.2.6.nupkg.sha512",
         "microsoft.aspnetcore.server.httpsys.nuspec"
       ]
     },
-    "Microsoft.AspNetCore.Server.IIS/2.2.2": {
-      "sha512": "hTiYkTGgHJerrmejw2IAFW1X5W26VCF2+Y+gSQ4hZLWhZkq4Yw3zkH8H6Qq8VN9V8DpM0dQMpphD9Y3DkErjVA==",
+    "Microsoft.AspNetCore.Server.IIS/2.2.6": {
+      "sha512": "gyODQZv0fifUKPDQ3aDyauiABfRq7AI1eUbg0ZNuostsw2fH9nCd0vpW6BR8wnW/udFlvfvK1cI28SzROqMf+w==",
       "type": "package",
-      "path": "microsoft.aspnetcore.server.iis/2.2.2",
+      "path": "microsoft.aspnetcore.server.iis/2.2.6",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "build/netstandard2.0/Microsoft.AspNetCore.Server.IIS.targets",
         "lib/netstandard2.0/Microsoft.AspNetCore.Server.IIS.dll",
         "lib/netstandard2.0/Microsoft.AspNetCore.Server.IIS.xml",
-        "microsoft.aspnetcore.server.iis.2.2.2.nupkg.sha512",
+        "microsoft.aspnetcore.server.iis.2.2.6.nupkg.sha512",
         "microsoft.aspnetcore.server.iis.nuspec",
         "runtimes/win-x64/nativeassets/netcoreapp2.2/aspnetcorev2_inprocess.dll",
         "runtimes/win-x86/nativeassets/netcoreapp2.2/aspnetcorev2_inprocess.dll"
@@ -7586,10 +7586,10 @@
         "microsoft.entityframeworkcore.analyzers.nuspec"
       ]
     },
-    "Microsoft.EntityFrameworkCore.Design/2.2.4": {
-      "sha512": "4SfnD7wYxr+OzcPOZYlzPtKtL1cdXk+a8g4bKc8QcgaGhpvVOTK5ROTZaOe10tmvFXFEJVZSGtXpFAbgiDFtjg==",
+    "Microsoft.EntityFrameworkCore.Design/2.2.6": {
+      "sha512": "ouDKXTXY+ItF+PAK/jkp+Cp6Ve8Pd9sblyqOErjaiK7CzeN28peFsv3NfDeoqTAXXCCKEyuv/iXYtLs4r3wI0w==",
       "type": "package",
-      "path": "microsoft.entityframeworkcore.design/2.2.4",
+      "path": "microsoft.entityframeworkcore.design/2.2.6",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -7599,33 +7599,33 @@
         "lib/net461/Microsoft.EntityFrameworkCore.Design.xml",
         "lib/netstandard2.0/Microsoft.EntityFrameworkCore.Design.dll",
         "lib/netstandard2.0/Microsoft.EntityFrameworkCore.Design.xml",
-        "microsoft.entityframeworkcore.design.2.2.4.nupkg.sha512",
+        "microsoft.entityframeworkcore.design.2.2.6.nupkg.sha512",
         "microsoft.entityframeworkcore.design.nuspec"
       ]
     },
-    "Microsoft.EntityFrameworkCore.InMemory/2.2.4": {
-      "sha512": "4YQxumfj7SOdL3wQFo+cT+KHnH5ox1MSyZ36IrOcx1NM+LG4J+n+zSNMFgqmv1p17hBr5unNnECnJQiHSg6lqw==",
+    "Microsoft.EntityFrameworkCore.InMemory/2.2.6": {
+      "sha512": "PREu4MsAGz3NEheW4TX4e8Bl4l34OrA4R4KFyWb3r475QRS1/ul4vK1mUzWF/fEwJgx7n1h1tvNZW7I04sl5fw==",
       "type": "package",
-      "path": "microsoft.entityframeworkcore.inmemory/2.2.4",
+      "path": "microsoft.entityframeworkcore.inmemory/2.2.6",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "lib/netstandard2.0/Microsoft.EntityFrameworkCore.InMemory.dll",
         "lib/netstandard2.0/Microsoft.EntityFrameworkCore.InMemory.xml",
-        "microsoft.entityframeworkcore.inmemory.2.2.4.nupkg.sha512",
+        "microsoft.entityframeworkcore.inmemory.2.2.6.nupkg.sha512",
         "microsoft.entityframeworkcore.inmemory.nuspec"
       ]
     },
-    "Microsoft.EntityFrameworkCore.Relational/2.2.4": {
-      "sha512": "Ga+kJhoSBNYv8C2gQl2sB5bTBkWsLFn92CPjZA5ql/MyxJTWri6lf44/GSYEcOQj0tqF5HhMAaB1HxQMiIPBcQ==",
+    "Microsoft.EntityFrameworkCore.Relational/2.2.6": {
+      "sha512": "AlB4Gg1nplg6fwieCLixphmYkhwM1SSHecE43oDizAjFUSs7vlL5mlwf620X4SB037pVg+naxhBEtF53TGa6yQ==",
       "type": "package",
-      "path": "microsoft.entityframeworkcore.relational/2.2.4",
+      "path": "microsoft.entityframeworkcore.relational/2.2.6",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "lib/netstandard2.0/Microsoft.EntityFrameworkCore.Relational.dll",
         "lib/netstandard2.0/Microsoft.EntityFrameworkCore.Relational.xml",
-        "microsoft.entityframeworkcore.relational.2.2.4.nupkg.sha512",
+        "microsoft.entityframeworkcore.relational.2.2.6.nupkg.sha512",
         "microsoft.entityframeworkcore.relational.nuspec"
       ]
     },
@@ -7654,29 +7654,29 @@
         "microsoft.entityframeworkcore.sqlite.core.nuspec"
       ]
     },
-    "Microsoft.EntityFrameworkCore.SqlServer/2.2.4": {
-      "sha512": "e0rW3jJXunnwUCout+lQicDoyviO53qsuawZa/HZsfRoEF/bWGlGTJxUN0MPZVQkEd5Gx8ypdDSRbGHtrQp/SA==",
+    "Microsoft.EntityFrameworkCore.SqlServer/2.2.6": {
+      "sha512": "rNnCA7ntlpITeYl1p3lAeS0kyHhETlanTghfpoDgyGIoxyUm2VsI2eyzL6EMYrqWnhAOwx3HzP0/50XRM/0CHw==",
       "type": "package",
-      "path": "microsoft.entityframeworkcore.sqlserver/2.2.4",
+      "path": "microsoft.entityframeworkcore.sqlserver/2.2.6",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "lib/netstandard2.0/Microsoft.EntityFrameworkCore.SqlServer.dll",
         "lib/netstandard2.0/Microsoft.EntityFrameworkCore.SqlServer.xml",
-        "microsoft.entityframeworkcore.sqlserver.2.2.4.nupkg.sha512",
+        "microsoft.entityframeworkcore.sqlserver.2.2.6.nupkg.sha512",
         "microsoft.entityframeworkcore.sqlserver.nuspec"
       ]
     },
-    "Microsoft.EntityFrameworkCore.Tools/2.2.4": {
-      "sha512": "9n1Mv6FrFmlVkkXVkO7U71GG42CfRjlKV0bca++UYjsmmtVVds4PhUjgVrHCh3ZTRI4jqBc5Y7trUvwdwXisPw==",
+    "Microsoft.EntityFrameworkCore.Tools/2.2.6": {
+      "sha512": "L6vi+eT++Q+2jSIWtOB1LD4yB4dR1nQrWg/Wx1kArPo0rD8D9R4uD6LU5OFz3U/ibjADxLgmQmYDqjusrOI7SA==",
       "type": "package",
-      "path": "microsoft.entityframeworkcore.tools/2.2.4",
+      "path": "microsoft.entityframeworkcore.tools/2.2.6",
       "hasTools": true,
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "lib/netstandard2.0/_._",
-        "microsoft.entityframeworkcore.tools.2.2.4.nupkg.sha512",
+        "microsoft.entityframeworkcore.tools.2.2.6.nupkg.sha512",
         "microsoft.entityframeworkcore.tools.nuspec",
         "tools/EntityFrameworkCore.PowerShell2.psd1",
         "tools/EntityFrameworkCore.PowerShell2.psm1",
@@ -8608,10 +8608,10 @@
         "microsoft.net.http.headers.nuspec"
       ]
     },
-    "Microsoft.NETCore.App/2.2.5": {
-      "sha512": "SeOCRodgG7E5Ta/TXXL2Dkk4PxI2WpEUL3JjyLyp3yI+CYfAR5f159E516S4sFzY+8WvW+ZxQv4LCsGgFGRsrw==",
+    "Microsoft.NETCore.App/2.2.6": {
+      "sha512": "PZjD2tXab/tmbyfuWsO6iI0/XEQaeU5L02440lUwDITNIVFEyau/fxWsL6p7ZwppE5nds6O0mA1RsmA232AciQ==",
       "type": "package",
-      "path": "microsoft.netcore.app/2.2.5",
+      "path": "microsoft.netcore.app/2.2.6",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -8621,7 +8621,7 @@
         "build/netcoreapp2.2/Microsoft.NETCore.App.PlatformManifest.txt",
         "build/netcoreapp2.2/Microsoft.NETCore.App.props",
         "build/netcoreapp2.2/Microsoft.NETCore.App.targets",
-        "microsoft.netcore.app.2.2.5.nupkg.sha512",
+        "microsoft.netcore.app.2.2.6.nupkg.sha512",
         "microsoft.netcore.app.nuspec",
         "ref/netcoreapp2.2/Microsoft.CSharp.dll",
         "ref/netcoreapp2.2/Microsoft.CSharp.xml",
@@ -8873,59 +8873,59 @@
         "runtime.json"
       ]
     },
-    "Microsoft.NETCore.DotNetAppHost/2.2.5": {
-      "sha512": "4n6+RzNn2vqxWaewPX+qtzlwQog1ynL/KnnEkb/H4q8+TSqOj3mIoSKmreXlQkZ5ENFtaQD22dtS5TG4P3Wcxw==",
+    "Microsoft.NETCore.DotNetAppHost/2.2.6": {
+      "sha512": "JhDrRlwg0eWwWvCkMwRqbjNr4mIvCN9230bfTHq2VkKASWLUR+J4nT7JkcnW9XsMg5uI4/uh3v/ixLeMV2nOyg==",
       "type": "package",
-      "path": "microsoft.netcore.dotnetapphost/2.2.5",
+      "path": "microsoft.netcore.dotnetapphost/2.2.6",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
-        "microsoft.netcore.dotnetapphost.2.2.5.nupkg.sha512",
+        "microsoft.netcore.dotnetapphost.2.2.6.nupkg.sha512",
         "microsoft.netcore.dotnetapphost.nuspec",
         "runtime.json"
       ]
     },
-    "Microsoft.NETCore.DotNetHostPolicy/2.2.5": {
-      "sha512": "e9lvk+RVmI8mMOKrmf0rIpj2eN0qdua9ojyKOPdlPSmLf1uySZFoAVzQBK+6ew/d/OdUvCdZ7WfxErgEHrC4oQ==",
+    "Microsoft.NETCore.DotNetHostPolicy/2.2.6": {
+      "sha512": "AHI/KMrHK3SGGR3xTdYrl06sgw2V64m0P2jKR44GiFAhlqFDvCKgbvofbdQDIUNPBawJc2Dq+yr0BV4YrFxMyQ==",
       "type": "package",
-      "path": "microsoft.netcore.dotnethostpolicy/2.2.5",
+      "path": "microsoft.netcore.dotnethostpolicy/2.2.6",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
-        "microsoft.netcore.dotnethostpolicy.2.2.5.nupkg.sha512",
+        "microsoft.netcore.dotnethostpolicy.2.2.6.nupkg.sha512",
         "microsoft.netcore.dotnethostpolicy.nuspec",
         "runtime.json"
       ]
     },
-    "Microsoft.NETCore.DotNetHostResolver/2.2.5": {
-      "sha512": "uByTxYOmyv3Pzuw90R9HxLSrJSGVq43K8I01Bc+H+ZaG0PkKXXQg1wHU8b1c00eukcJdVoM5a4oessIgeRosUg==",
+    "Microsoft.NETCore.DotNetHostResolver/2.2.6": {
+      "sha512": "zU6jTnErV/v3xMYpe4l89GhPAWkZdMrXEgxF4wxezDRM3FVnq4ywA3mB5UKNRV5ALqKpEAMGuSnXokek9b8cww==",
       "type": "package",
-      "path": "microsoft.netcore.dotnethostresolver/2.2.5",
+      "path": "microsoft.netcore.dotnethostresolver/2.2.6",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
-        "microsoft.netcore.dotnethostresolver.2.2.5.nupkg.sha512",
+        "microsoft.netcore.dotnethostresolver.2.2.6.nupkg.sha512",
         "microsoft.netcore.dotnethostresolver.nuspec",
         "runtime.json"
       ]
     },
-    "Microsoft.NETCore.Platforms/2.2.1": {
-      "sha512": "QRGQDN9a/RflmqEpT47gJ04befYL1T+Z7ctRuBfc5PdUO3k5VnV5Y1glBMnWbAPGfP62x8EAwmZPNEpsYX/qig==",
+    "Microsoft.NETCore.Platforms/2.2.2": {
+      "sha512": "SbT/7qDI9u/K+UJXpsCj0po0/kqI97emqaeZZkLD6y+E8oOjoxDLVm004aQxmQ9rxWvBu17lgnMyStbwSVGcYw==",
       "type": "package",
-      "path": "microsoft.netcore.platforms/2.2.1",
+      "path": "microsoft.netcore.platforms/2.2.2",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
         "lib/netstandard1.0/_._",
-        "microsoft.netcore.platforms.2.2.1.nupkg.sha512",
+        "microsoft.netcore.platforms.2.2.2.nupkg.sha512",
         "microsoft.netcore.platforms.nuspec",
         "runtime.json",
         "useSharedDesignerContext.txt",
@@ -10274,10 +10274,10 @@
         "system.console.nuspec"
       ]
     },
-    "System.Data.SqlClient/4.6.0": {
-      "sha512": "gwItUWW1BMCckicFO85c8frFaMK8SGqYn5IeA3GSX4Lmid+CjXETfoHz7Uv+Vx6L0No7iRc/7cBL8gd6o9k9/g==",
+    "System.Data.SqlClient/4.6.1": {
+      "sha512": "7MTJhBFt4/tSJ2VRpG+TQNPcDdbCnWuoYzbe0kD5O3mQ7aZ2Q+Q3D9Y5Y3/aper5Gp3Lrs+8edk9clvxyPYXPw==",
       "type": "package",
-      "path": "system.data.sqlclient/4.6.0",
+      "path": "system.data.sqlclient/4.6.1",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -10342,7 +10342,7 @@
         "runtimes/win/lib/netstandard1.3/System.Data.SqlClient.dll",
         "runtimes/win/lib/netstandard2.0/System.Data.SqlClient.dll",
         "runtimes/win/lib/uap10.0.16299/System.Data.SqlClient.dll",
-        "system.data.sqlclient.4.6.0.nupkg.sha512",
+        "system.data.sqlclient.4.6.1.nupkg.sha512",
         "system.data.sqlclient.nuspec",
         "useSharedDesignerContext.txt",
         "version.txt"
@@ -14680,10 +14680,10 @@
       "DataLayer >= 1.0.0",
       "DomainLayer >= 1.0.0",
       "Microsoft.AspNetCore.All >= 2.2.0",
-      "Microsoft.AspNetCore.App >= 2.2.5",
+      "Microsoft.AspNetCore.App >= 2.2.6",
       "Microsoft.AspNetCore.Identity >= 2.2.0",
       "Microsoft.EntityFrameworkCore >= 2.2.6",
-      "Microsoft.NETCore.App >= 2.2.5",
+      "Microsoft.NETCore.App >= 2.2.6",
       "Newtonsoft.Json >= 12.0.2",
       "Npgsql >= 4.0.7",
       "Npgsql.EntityFrameworkCore.PostgreSQL >= 2.2.4",
@@ -14709,7 +14709,7 @@
         "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "/Users/bupson/.nuget/NuGet/NuGet.Config"
+        "/Users/bupson/.config/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.2"
@@ -14748,7 +14748,7 @@
           "Microsoft.AspNetCore.App": {
             "suppressParent": "All",
             "target": "Package",
-            "version": "[2.2.5, )",
+            "version": "[2.2.6, )",
             "autoReferenced": true
           },
           "Microsoft.AspNetCore.Identity": {
@@ -14762,7 +14762,7 @@
           "Microsoft.NETCore.App": {
             "suppressParent": "All",
             "target": "Package",
-            "version": "[2.2.5, )",
+            "version": "[2.2.6, )",
             "autoReferenced": true
           },
           "Newtonsoft.Json": {

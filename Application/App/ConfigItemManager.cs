@@ -38,7 +38,7 @@ namespace App
                 if (classProperty != null) //if has the named property
                 {
                     // set the key as per the class eg yourName vs yourname vs YourNAME
-                    JProperty localProp = configItem.Properties.Property(prop.Key);
+                    JProperty localProp = configItem.Properties.Property(prop.Key); 
                     localProp.Value.Rename(classProperty.InternalName);
                 }
                 else
@@ -48,7 +48,7 @@ namespace App
             }
         }
 
-
+        
         public ConfigItemRelationshipEntity CreateConfigItemRelationship(Guid sourceConfigItemId, Guid targetConfigItemId, string relationshipDescription, bool ensureUniqueBetweenClasses, string userName)
         {
 
@@ -240,43 +240,11 @@ namespace App
             patchConfigItemJObject.Remove("properties");
             patchConfigItemJObject["Properties"] = patchConfigItem.Properties;
 
+            configItem = ProcessProperties(configItem); //in case we have changed the class definition since last save
             var source = JObject.FromObject(configItem);
-            //configItem = MergeObjects(source, patchConfigItemJObject).ToObject<ConfigItemEntity>();
-            //Console.WriteLine(JsonConvert.SerializeObject(patchConfigItemJObject, Formatting.Indented));
-            //configItem = MergeObjects(source, JObject.FromObject(patchConfigItem)).ToObject<ConfigItemEntity>();
             configItem = MergeObjects(source, patchConfigItemJObject).ToObject<ConfigItemEntity>();
 
-            //Console.WriteLine(JsonConvert.SerializeObject(configItem, Formatting.Indented));
-            /*
-            var updatedPatchConfigItemJObject = JObject.FromObject(patchConfigItem);
-
-            patchConfigItemJObject["properties"] = updatedPatchConfigItemJObject["Properties"];
-
-            //process properties object first, and store a copy
-            var sourceProperties = JObject.FromObject(configItem.Properties);
-            if (sourceProperties == null) sourceProperties = new JObject();
-            sourceProperties.Merge(patchConfigItemJObject["properties"], new JsonMergeSettings
-            {
-                // union array values together to avoid duplicates
-                MergeArrayHandling = MergeArrayHandling.Replace, //will blow away properties if only one is specified
-                MergeNullValueHandling = MergeNullValueHandling.Merge
-            });
-            var mergedProperties = sourceProperties;
-            //Beware objects nested inside properties! 
-
-            //next process main object
-            var sourceConfigItemJObject = JObject.FromObject(configItem);
-            sourceConfigItemJObject.Merge(patchConfigItemJObject, new JsonMergeSettings
-            {
-                // union array values together to avoid duplicates
-                MergeArrayHandling = MergeArrayHandling.Replace, //.Replace will blow away properties if only one is specified
-                MergeNullValueHandling = MergeNullValueHandling.Merge
-            });
-
-            configItem = sourceConfigItemJObject.ToObject<ConfigItemEntity>();
-            */
-            //add properties object back
-            //configItem.Properties = mergedProperties;
+            //Console.WriteLine(JsonConvert.SerializeObject(configItem, Formatting.Indented));            
             return this.UpdateConfigItem(configItem);
         }
 
