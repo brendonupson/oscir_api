@@ -2,26 +2,24 @@
   <MonoDevelop.Ide.ItemProperties.ApplicationLayer PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.ItemProperties.OSCiR PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.ItemProperties.OSCiR__xUnit PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Application/App/ConfigItemManager.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Domain/Model/ClassEntity.cs">
     <Files>
-      <File FileName="Application/App/ConfigItemManager.cs" Line="171" Column="60" />
+      <File FileName="Application/App/ConfigItemManager.cs" Line="247" Column="95" />
       <File FileName="Data/Datastore/ConfigItemRepository.cs" />
       <File FileName="OSCiR/Areas/ConfigItem/Controller/ConfigItemController.cs" />
+      <File FileName="Domain/Model/ClassEntity.cs" Line="17" Column="39" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="OSCiR" expanded="True">
-            <Node name="ApplicationLayer" expanded="True">
-              <Node name="App" expanded="True">
-                <Node name="ConfigItemManager.cs" selected="True" />
-              </Node>
-            </Node>
             <Node name="DataLayer" expanded="True">
               <Node name="Datastore" expanded="True" />
             </Node>
             <Node name="DomainLayer" expanded="True">
-              <Node name="Model" expanded="True" />
+              <Node name="Model" expanded="True">
+                <Node name="ClassEntity.cs" selected="True" />
+              </Node>
             </Node>
             <Node name="OSCiR" expanded="True">
               <Node name="Areas" expanded="True">
