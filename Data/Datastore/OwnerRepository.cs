@@ -76,6 +76,23 @@ namespace OSCiR.Datastore
             }
         }
 
+        public IEnumerable<OwnerEntity> GetOwners(Guid? ownerEntityId)
+        {
+            try
+            {
+                var ownerResults = _ownerSet.Where(a => (ownerEntityId==null || ownerEntityId==a.Id))
+                            .OrderBy(o => o.OwnerCode)
+                            .ThenBy(x => x.OwnerName)
+                            .AsNoTracking().ToList<OwnerEntity>();
+                return ownerResults;
+
+            }
+            catch (Exception e)
+            {
+                throw new DataReadException("GetOwners(): " + e.Message, e);
+            }
+        }
+
         public OwnerEntity Update(OwnerEntity ownerEntity)
         {
 

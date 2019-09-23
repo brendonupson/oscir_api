@@ -6,7 +6,7 @@ using OSCiR.Model;
 using Microsoft.EntityFrameworkCore;
 using DomainLayer.Exceptions;
 using Application.Interfaces;
-
+using DomainLayer.Model.AdHoc;
 
 namespace OSCiR.Areas.Admin.Class.Model
 {
@@ -276,6 +276,27 @@ namespace OSCiR.Areas.Admin.Class.Model
             }
         }
 
-
+        public IEnumerable<ConfigItemStatistic> GetConfigItemCountsForOwner(Guid ownerEntityId)
+        {            
+            try
+            {
+                List<ConfigItemStatistic> ciStat = _ciSet.AsNoTracking()
+                                                    .Where(ci => ci.OwnerId == ownerEntityId)
+                                                    .GroupBy(ci => new { ci.ClassEntityId, ci.ParentClassEntity.ClassName })
+                                                    .Select(group => new ConfigItemStatistic(){
+                                                        ClassEntityId = group.Key.ClassEntityId,
+                                                        ClassName = group.Key.ClassName,
+                                                        Count = group.Count()
+                                                    })
+                                                    .OrderBy(cis => cis.ClassName)
+                                                    .ToList();
+                return ciStat;
+            }
+            catch (Exception e)
+            {
+                throw new DataReadException(e.Message, e);
+            }
+            
+        }
     }
 }

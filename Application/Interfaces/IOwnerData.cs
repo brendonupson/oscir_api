@@ -13,6 +13,6 @@ namespace Application.Interfaces
         bool Delete(Guid ownerGuid);
 
         IEnumerable<OwnerEntity> GetOwners(string ownerCodeEquals, string ownerNameContains, bool getUsedOwnersOnly);
-
+        IEnumerable<OwnerEntity> GetOwners(Guid? ownerEntityId);
     }
 }
