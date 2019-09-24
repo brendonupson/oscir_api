@@ -1,14 +1,15 @@
 ﻿<Properties StartupConfiguration="{D6B22F96-1DE5-40AA-AFDD-4DFE4E69945A}|Default">
   <MonoDevelop.Ide.ItemProperties.ApplicationLayer PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.ItemProperties.OSCiR PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.ItemProperties.OSCiR PreferredExecutionTarget="/Applications/Google Chrome.app" />
   <MonoDevelop.Ide.ItemProperties.OSCiR__xUnit PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Data/Datastore/ConfigItemRepository.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Data/Datastore/BlueprintRepository.cs">
     <Files>
       <File FileName="Application/App/ConfigItemManager.cs" Line="26" Column="1" />
-      <File FileName="Application/App/ReportManager.cs" Line="31" Column="31" />
-      <File FileName="Domain/Model/AdHoc/OwnerStatistic.cs" Line="17" Column="39" />
-      <File FileName="Data/Datastore/ConfigItemRepository.cs" Line="279" Column="47" />
-      <File FileName="OSCiR/Areas/Report/Controller/ReportController.cs" Line="45" Column="10" />
+      <File FileName="Application/App/ReportManager.cs" />
+      <File FileName="Domain/Model/AdHoc/OwnerStatistic.cs" Line="22" Column="6" />
+      <File FileName="Data/Datastore/ConfigItemRepository.cs" Line="319" Column="63" />
+      <File FileName="OSCiR/Areas/Report/Controller/ReportController.cs" Line="75" Column="11" />
+      <File FileName="Data/Datastore/BlueprintRepository.cs" Line="275" Column="15" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -20,7 +21,12 @@
             </Node>
             <Node name="DataLayer" expanded="True">
               <Node name="Datastore" expanded="True">
-                <Node name="ConfigItemRepository.cs" selected="True" />
+                <Node name="BlueprintRepository.cs" selected="True" />
+              </Node>
+            </Node>
+            <Node name="DomainLayer" expanded="True">
+              <Node name="Model" expanded="True">
+                <Node name="AdHoc" expanded="True" />
               </Node>
             </Node>
             <Node name="OSCiR" expanded="True">

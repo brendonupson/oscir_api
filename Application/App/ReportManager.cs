@@ -18,12 +18,12 @@ namespace ApplicationLayer.App
         }
 
 
-        public List<OwnerStatistic> GetOwnerStatistics(Guid? ownerEntityId)
+        public IEnumerable<OwnerStatistic> GetOwnerStatistics(Guid? ownerEntityId)
         {
             List<OwnerStatistic> stats = new List<OwnerStatistic>(100);
             var owners = _ownerRepo.GetOwners(ownerEntityId);
 
-            foreach(var owner in owners)
+            foreach (var owner in owners)
             {
                 OwnerStatistic os = new OwnerStatistic() { OwnerEntityId = owner.Id, OwnerName = owner.OwnerName };
                 os.ConfigItemStatistics = _configItemRepo.GetConfigItemCountsForOwner(owner.Id);
@@ -31,6 +31,12 @@ namespace ApplicationLayer.App
                 stats.Add(os);
             }
 
+            return stats;
+        }
+
+        public IEnumerable<ConfigItemStatistic> GetClassStatistics(Guid? classEntityId)
+        {            
+            var stats = _configItemRepo.GetConfigItemCountsForClass(classEntityId);            
             return stats;
         }
     }

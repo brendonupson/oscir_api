@@ -276,16 +276,18 @@ namespace OSCiR.Areas.Admin.Class.Model
             }
         }
 
+
         public IEnumerable<ConfigItemStatistic> GetConfigItemCountsForOwner(Guid ownerEntityId)
         {            
             try
             {
                 List<ConfigItemStatistic> ciStat = _ciSet.AsNoTracking()
                                                     .Where(ci => ci.OwnerId == ownerEntityId)
-                                                    .GroupBy(ci => new { ci.ClassEntityId, ci.ParentClassEntity.ClassName })
+                                                    .GroupBy(ci => new { ci.ClassEntityId, ci.ParentClassEntity.ClassName, ci.ParentClassEntity.ColorCode })
                                                     .Select(group => new ConfigItemStatistic(){
                                                         ClassEntityId = group.Key.ClassEntityId,
                                                         ClassName = group.Key.ClassName,
+                                                        ColorCode = group.Key.ColorCode,
                                                         Count = group.Count()
                                                     })
                                                     .OrderBy(cis => cis.ClassName)
@@ -297,6 +299,31 @@ namespace OSCiR.Areas.Admin.Class.Model
                 throw new DataReadException(e.Message, e);
             }
             
+        }
+
+        public IEnumerable<ConfigItemStatistic> GetConfigItemCountsForClass(Guid? classEntityId)
+        {
+            try
+            {
+                List<ConfigItemStatistic> ciStat = _ciSet.AsNoTracking()
+                                                    .Where(ci => (classEntityId==null || ci.ClassEntityId == classEntityId))
+                                                    .GroupBy(ci => new { ci.ClassEntityId, ci.ParentClassEntity.ClassName, ci.ParentClassEntity.ColorCode })
+                                                    .Select(group => new ConfigItemStatistic()
+                                                    {
+                                                        ClassEntityId = group.Key.ClassEntityId,
+                                                        ClassName = group.Key.ClassName,
+                                                        ColorCode = group.Key.ColorCode,
+                                                        Count = group.Count()
+                                                    })
+                                                    .OrderBy(cis => cis.ClassName)
+                                                    .ToList();
+                return ciStat;
+            }
+            catch (Exception e)
+            {
+                throw new DataReadException(e.Message, e);
+            }
+
         }
     }
 }

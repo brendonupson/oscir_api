@@ -14,7 +14,14 @@ namespace DomainLayer.Model.AdHoc
     {
         public Guid ClassEntityId { get; set; }
         public string ClassName { get; set; }
+        public string ColorCode { get; set; }
         public int Count { get; set; }
+    }
+
+    public class DayStatistic
+    {
+        public DateTime day { get; set; }        
+        public IEnumerable<ConfigItemStatistic> ConfigItemStatistics { get; set; }
     }
 
     //TODO Category statistics, eg all "Network" devices?

@@ -52,5 +52,46 @@ namespace OSCiR.Areas.Report.Controller
             }
         }
 
+        [HttpGet("ConfigItemsByClass")]
+        public async Task<ActionResult<IEnumerable<OwnerStatistic>>> GetConfigItemsByClass(Guid? classEntityId)
+        {
+            var authorizationResult = await _authorizationService.AuthorizeAsync(User, new ConfigItemEntity(), Operations.Read);
+            if (!authorizationResult.Succeeded)
+            {
+                return Unauthorized();
+            }
+
+            try
+            {
+                var ciReply = _reportManager.GetClassStatistics(classEntityId);
+                return Ok(ciReply);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.ToString());
+            }
+        }
+
+        /*
+        [HttpGet("ConfigItemsModifiedByDay")]
+        public async Task<ActionResult<IEnumerable<OwnerStatistic>>> GetConfigItemsByClass(DateTime since)
+        {
+            var authorizationResult = await _authorizationService.AuthorizeAsync(User, new ConfigItemEntity(), Operations.Read);
+            if (!authorizationResult.Succeeded)
+            {
+                return Unauthorized();
+            }
+
+            try
+            {
+                var ciReply = _reportManager.GetClassStatistics(classEntityId);
+                return Ok(ciReply);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.ToString());
+            }
+        }*/
+
     }//class
 }

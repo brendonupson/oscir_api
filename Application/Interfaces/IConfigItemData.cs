@@ -18,10 +18,12 @@ namespace Application.Interfaces
         ConfigItemRelationshipEntity CreateConfigItemRelationship(ConfigItemRelationshipEntity configItemRelationshipEntity);
         ConfigItemRelationshipEntity ReadConfigItemRelationship(Guid configItemRelationshipGuid);
         bool DeleteConfigItemRelationship(Guid configItemRelationshipId, string userName);
-        IEnumerable<ConfigItemStatistic> GetConfigItemCountsForOwner(Guid ownerEntityId);
+        
         void DeleteConfigItemRelationshipsToClass(Guid sourceConfigItemId, Guid targetClassEntityId, string userName);
 
         IEnumerable<ConfigItemRelationshipEntity> GetConfigItemRelationships(Guid sourceConfigItemId, Guid? targetConfigItemId);
 
+        IEnumerable<ConfigItemStatistic> GetConfigItemCountsForOwner(Guid ownerEntityId);
+        IEnumerable<ConfigItemStatistic> GetConfigItemCountsForClass(Guid? classEntityId);
     }
 }

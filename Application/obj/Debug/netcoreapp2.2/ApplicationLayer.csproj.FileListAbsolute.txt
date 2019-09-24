@@ -6,7 +6,6 @@
 /Users/bupson/Projects/oscir_api/Application/bin/Debug/netcoreapp2.2/DomainLayer.dll
 /Users/bupson/Projects/oscir_api/Application/bin/Debug/netcoreapp2.2/DomainLayer.pdb
 /Users/bupson/Projects/oscir_api/Application/obj/Debug/netcoreapp2.2/ApplicationLayer.csprojAssemblyReference.cache
-/Users/bupson/Projects/oscir_api/Application/obj/Debug/netcoreapp2.2/ApplicationLayer.csproj.CoreCompileInputs.cache
 /Users/bupson/Projects/oscir_api/Application/obj/Debug/netcoreapp2.2/ApplicationLayer.RazorAssemblyInfo.cache
 /Users/bupson/Projects/oscir_api/Application/obj/Debug/netcoreapp2.2/ApplicationLayer.RazorAssemblyInfo.cs
 /Users/bupson/Projects/oscir_api/Application/obj/Debug/netcoreapp2.2/ApplicationLayer.AssemblyInfoInputs.cache
@@ -15,3 +14,4 @@
 /Users/bupson/Projects/oscir_api/Application/obj/Debug/netcoreapp2.2/ApplicationLayer.csproj.CopyComplete
 /Users/bupson/Projects/oscir_api/Application/obj/Debug/netcoreapp2.2/ApplicationLayer.dll
 /Users/bupson/Projects/oscir_api/Application/obj/Debug/netcoreapp2.2/ApplicationLayer.pdb
+/Users/bupson/Projects/oscir_api/Application/bin/Debug/netcoreapp2.2/Properties/launchSettings.json
